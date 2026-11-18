@@ -1,0 +1,95 @@
+<!doctype html>
+<!--
+  GoldenDose — Kamala's app (the elder's phone or bedside tablet).
+  Same design as the approved prototype, now connected to the real backend.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F6F5F0">
+  <title>GoldenDose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+  <link rel="stylesheet" href="shared/tokens.css">
+  <link rel="stylesheet" href="elder.css">
+</head>
+<body>
+
+  <!-- Browsers only allow sound after one tap. This bar asks for that tap. -->
+  <button class="sound-bar" id="sound-bar" type="button" hidden>Tap here once to switch on the alarm sound</button>
+
+  <!-- Short messages, such as "No internet right now" -->
+  <p class="notice" id="notice" role="status" hidden></p>
+
+  <!-- SCREEN 0: Pairing. Shown once, when the phone isn't connected yet. -->
+  <main class="pair" id="pair-view" hidden>
+    <h1 class="pair-title">Welcome to GoldenDose</h1>
+    <p class="pair-text" id="pair-text">Ask your family for the 6-digit code from their GoldenDose app, and type it here.</p>
+    <form class="pair-form" id="pair-form" novalidate>
+      <label class="pair-label" for="pair-code">Code</label>
+      <input class="pair-input" id="pair-code" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="7">
+      <p class="form-error" id="pair-error" role="alert"></p>
+      <button class="btn btn-go" id="pair-button" type="submit">Connect</button>
+    </form>
+  </main>
+
+  <!-- SCREEN 1: Today -->
+  <main class="today" id="today-view" hidden>
+    <header class="today-header">
+      <button class="btn btn-emergency" type="button" data-action="emergency">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+        <span id="emergency-button-label">Emergency</span>
+      </button>
+      <p class="today-date" id="today-date"></p>
+      <h1 class="greeting" id="greeting"></h1>
+      <p class="progress" id="progress"></p>
+      <p class="offline" id="offline" hidden>No internet right now. Reminders still work.</p>
+    </header>
+    <ol class="dose-list" id="dose-list" aria-label="Today's medicines"></ol>
+    <!-- Who this phone is connected to, so Kamala knows her family can see it -->
+    <p class="connected" id="connected" hidden></p>
+  </main>
+
+  <!-- SCREEN 2: The full-screen alarm -->
+  <section class="alarm" id="alarm" role="alertdialog" aria-modal="true" aria-labelledby="alarm-title" hidden>
+    <p class="alarm-clock" id="alarm-clock"></p>
+    <h2 class="alarm-title" id="alarm-title">Time for your medicine</h2>
+    <div class="alarm-pill" id="alarm-pill"></div>
+    <p class="alarm-name" id="alarm-name"></p>
+    <p class="alarm-instruction" id="alarm-instruction"></p>
+    <div class="alarm-actions">
+      <button class="btn btn-go" id="alarm-take" data-action="take-from-alarm">Taken</button>
+      <button class="btn btn-plain" id="alarm-skip" data-action="skip-from-alarm">Skip this dose</button>
+    </div>
+    <p class="alarm-note" id="alarm-note"></p>
+  </section>
+
+  <!-- "Well done" after Taken -->
+  <section class="done" id="done" hidden>
+    <svg class="done-tick" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="8"/>
+      <path d="M34 62 L52 80 L88 42" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="done-title" id="done-title">Well done</p>
+    <p class="done-time" id="done-time"></p>
+  </section>
+
+  <!-- SCREEN 3: Emergency. The family is told the moment it opens. -->
+  <section class="emergency" id="emergency" role="alertdialog" aria-modal="true" aria-labelledby="em-title" hidden>
+    <h2 class="em-title" id="em-title">Getting help</h2>
+    <p class="em-status" id="em-status" role="status"></p>
+    <div class="em-actions">
+      <a class="btn btn-call" id="em-hospital" href="#" hidden>Call hospital</a>
+      <a class="btn btn-call" id="em-ambulance" href="tel:108">Call ambulance 108</a>
+      <a class="btn btn-plain" id="em-nearest" href="https://www.google.com/maps/search/hospital+near+me" target="_blank" rel="noopener">Nearest hospitals</a>
+      <button class="btn btn-plain" id="em-ok" type="button" data-action="emergency-ok">I'm OK</button>
+    </div>
+  </section>
+
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+
+  <script type="module" src="elder.js"></script>
+</body>
+</html>

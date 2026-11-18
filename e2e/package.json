@@ -1,0 +1,16 @@
+{
+  "name": "goldendose-e2e",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser tests for GoldenDose: a robot uses the real screens, like a person would",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "report": "playwright show-report",
+    "full-video": "sh scripts/full-video/make-video.sh"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.0"
+  }
+}

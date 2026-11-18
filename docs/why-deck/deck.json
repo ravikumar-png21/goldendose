@@ -1,0 +1,54 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-12T17:45:00Z"
+  },
+  "lists": "css",
+  "title": "Why GoldenDose",
+  "cover": "cover",
+  "order": [
+    "cover",
+    "problem",
+    "worry",
+    "who",
+    "heard",
+    "what",
+    "how",
+    "elder",
+    "family",
+    "records",
+    "different",
+    "philosophy",
+    "close"
+  ],
+  "sections": {
+    "s1": {
+      "description": "Why we built it: the everyday problem with medicines in old age",
+      "start": "cover"
+    },
+    "s2": {
+      "description": "Who it is for: the older person and their family",
+      "start": "who"
+    },
+    "s3": {
+      "description": "What it does and how it works, in three simple steps",
+      "start": "what"
+    },
+    "s4": {
+      "description": "The benefits, for the older person and for the family",
+      "start": "elder"
+    },
+    "s5": {
+      "description": "What makes it different, and the idea behind it",
+      "start": "different"
+    }
+  },
+  "faces": {
+    "atkinson-hyperlegible": {
+      "family": "Atkinson Hyperlegible",
+      "href": "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+    }
+  },
+  "designSystems": []
+}

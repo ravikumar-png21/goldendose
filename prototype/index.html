@@ -1,0 +1,83 @@
+<!doctype html>
+<!--
+  GoldenDose prototype — index.html
+  HTML = the walls of the house. This file only says WHAT is on the page.
+  How it looks lives in styles.css. What it does lives in app.js.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>GoldenDose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- SCREEN 1: Today. The elder's main (and almost only) screen. -->
+  <main class="today" id="today">
+    <header class="today-header">
+      <p class="today-date" id="today-date"></p>
+      <h1 class="greeting" id="greeting"></h1>
+      <p class="progress" id="progress"></p>
+    </header>
+
+    <!-- The medicine cards are drawn here by app.js -->
+    <ol class="dose-list" id="dose-list" aria-label="Today's medicines"></ol>
+  </main>
+
+  <!-- SCREEN 2: The full-screen alarm. Hidden until a dose is due. -->
+  <section class="alarm" id="alarm" role="alertdialog" aria-modal="true" aria-labelledby="alarm-title" hidden>
+    <p class="alarm-clock" id="alarm-clock"></p>
+    <h2 class="alarm-title" id="alarm-title">Time for your medicine</h2>
+    <div class="alarm-pill" id="alarm-pill"></div>
+    <p class="alarm-name" id="alarm-name"></p>
+    <p class="alarm-instruction" id="alarm-instruction"></p>
+    <div class="alarm-actions">
+      <button class="btn btn-go" id="alarm-take" data-action="take-from-alarm">Taken</button>
+      <button class="btn btn-plain" data-action="skip-from-alarm">Skip this dose</button>
+    </div>
+    <p class="alarm-note" id="alarm-note"></p>
+
+    <!-- Prototype control (for testing only). The alarm locks scrolling,
+         so the main controls box can't be reached while it is showing. -->
+    <div class="alarm-demo">
+      <p>Prototype control: pretend Kamala doesn't answer</p>
+      <button class="demo-btn" data-action="demo-jump">Jump ahead 10 minutes</button>
+    </div>
+  </section>
+
+  <!-- The "Well done" confirmation shown for a moment after "Taken" -->
+  <section class="done" id="done" hidden>
+    <svg class="done-tick" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="8"/>
+      <path d="M34 62 L52 80 L88 42" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="done-title">Well done</p>
+    <p class="done-time" id="done-time"></p>
+  </section>
+
+  <!--
+    Prototype controls. These are for US while we test, not for Kamala.
+    They let us move the pretend clock so we can see the alarm without waiting.
+    The log shows what the real app would send to the backend through the API.
+  -->
+  <aside class="demo" aria-label="Prototype controls">
+    <p class="demo-title">Prototype controls <span class="demo-clock">Pretend time: <b id="demo-clock"></b></span></p>
+    <div class="demo-buttons">
+      <button class="demo-btn" data-action="demo-ring">Ring the next alarm now</button>
+      <button class="demo-btn" data-action="demo-jump">Jump ahead 10 minutes</button>
+      <button class="demo-btn" data-action="demo-reset">Start over</button>
+    </div>
+    <p class="demo-hint">What the real app would do behind the scenes:</p>
+    <ol class="demo-log" id="demo-log" reversed></ol>
+  </aside>
+
+  <!-- Invisible to the eye, but read out by screen readers when it changes -->
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

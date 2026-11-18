@@ -1,0 +1,29 @@
+# Installed packages (re-created by "npm install", never saved in Git)
+node_modules/
+
+# The local database file (holds test data, re-created by "npm run seed")
+backend/data/
+
+# Secret settings such as passwords and API keys
+.env
+
+# Mac system files
+.DS_Store
+
+# Browser test results and reports (re-created on every run)
+e2e/test-results/
+e2e/playwright-report/
+
+# Click-by-click video build files (re-created by e2e/scripts/guide-video/make-video.sh)
+docs/clickguide/video/frames/
+docs/clickguide/video/voice/
+docs/clickguide/video/music.wav
+docs/fullvideo/frames/
+docs/fullvideo/pdf-pages/
+docs/fullvideo/voice/
+docs/fullvideo/live/
+docs/fullvideo/plan-*.json
+tools/voice/node_modules/
+tools/voice/models/
+docs/fullvideo/samples/
+docs/fullvideo/sounds/

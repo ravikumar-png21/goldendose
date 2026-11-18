@@ -1,0 +1,176 @@
+<!doctype html><html><head><meta charset="utf-8"><title>How I Built GoldenDose</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+@page { size: 1920px 1080px; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Atkinson Hyperlegible', Verdana, sans-serif; color: #141414; }
+section { position: relative; width: 1920px; height: 1080px; overflow: hidden; page-break-after: always; background: #F6F5F0; padding: 112px 128px 150px; display: flex; flex-direction: column; gap: 48px; }
+section:last-child { page-break-after: auto; }
+.eyebrow { font-size: 24px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #0B5A2F; }
+h1 { font-size: 96px; line-height: 1.05; }
+h2 { font-size: 68px; line-height: 1.1; margin-top: 16px; }
+.lead { font-size: 34px; color: #45453F; line-height: 1.4; margin-top: 16px; max-width: 1500px; }
+.foot { position: absolute; left: 128px; bottom: 64px; font-size: 24px; color: #6B6A63; }
+.dark { background: #141414; color: #F6F5F0; }
+.dark .eyebrow { color: #FFD23F; }
+.dark .lead { color: #D9D8D0; }
+.green { background: #0B5A2F; color: #F6F5F0; }
+.green .eyebrow { color: #FFD23F; }
+.green .lead { color: #D9EDE1; }
+.row { display: flex; gap: 32px; }
+.card { flex: 1; background: #fff; border: 3px solid #141414; border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 14px; }
+.card.y { background: #FFD23F; }
+.card.c { background: #FFF1DC; border-color: #6B3A00; }
+.card .n { font-size: 24px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #0B5A2F; }
+.card.c .n { color: #6B3A00; }
+.card h3 { font-size: 40px; line-height: 1.1; }
+.card p { font-size: 27px; line-height: 1.45; color: #45453F; }
+.card.y p { color: #141414; }
+.like { margin-top: auto; padding-top: 14px; border-top: 2px solid #D6D5CE; font-size: 25px; }
+.road { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+.stop { border-radius: 20px; padding: 26px 28px; background: #fff; border: 3px solid #141414; display: flex; flex-direction: column; gap: 8px; min-height: 180px; }
+.stop b { font-size: 46px; color: #0B5A2F; }
+.stop span { font-size: 30px; font-weight: 700; line-height: 1.15; }
+.stop small { font-size: 23px; color: #45453F; line-height: 1.35; }
+.stop.next { background: transparent; border-style: dashed; border-color: #8A897F; }
+.stop.next b { color: #8A897F; }
+.key { display: flex; gap: 40px; font-size: 26px; color: #45453F; }
+.key i { display: inline-block; width: 26px; height: 26px; border-radius: 6px; vertical-align: -4px; margin-right: 10px; border: 3px solid #141414; background: #fff; }
+.key i.d { border-style: dashed; border-color: #8A897F; background: transparent; }
+.rest { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.rest div { border-radius: 24px; padding: 34px; display: flex; flex-direction: column; gap: 12px; background: #fff; border: 3px solid #141414; }
+.rest .who { font-size: 24px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #0B5A2F; }
+.rest h3 { font-size: 40px; }
+.rest p { font-size: 26px; line-height: 1.45; color: #45453F; }
+.list { display: flex; flex-direction: column; }
+.list div { display: flex; gap: 36px; padding: 24px 0; border-bottom: 2px solid #D6D5CE; align-items: baseline; }
+.list div:last-child { border-bottom: 0; }
+.list b { font-size: 34px; width: 520px; flex: none; }
+.list p { font-size: 30px; color: #45453F; line-height: 1.4; }
+.big { font-size: 120px; font-weight: 700; line-height: 1; color: #FFD23F; }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.tiles div { border-top: 4px solid #FFD23F; padding-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+.tiles h3 { font-size: 36px; }
+.tiles p { font-size: 27px; line-height: 1.4; color: #D9D8D0; }
+.green .tiles p { color: #D9EDE1; }
+</style></head><body>
+
+<section class="dark" style="justify-content:center;padding-bottom:112px">
+  <p class="eyebrow">From idea to demo</p>
+  <h1>How I built GoldenDose</h1>
+  <p class="lead" style="font-size:40px">The whole journey in simple words: what I did first, what came next, and why each step matters.</p>
+  <p style="font-size:26px;color:#8A897F;margin-top:48px">Ravi Kumar · 17 October 2026</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">The big picture</p>
+  <h2>Ten steps, like building a house</h2>
+  <p class="lead">First you plan the house. Then you build it. Then you check it. Then people move in. Making an app follows the same order.</p></div>
+  <div class="road">
+    <div class="stop"><b>1</b><span>Requirements</span><small>Decide what it must do</small></div>
+    <div class="stop"><b>2</b><span>UX design</span><small>Plan every step a user takes</small></div>
+    <div class="stop"><b>3</b><span>Look and prototype</span><small>Draw it, then make a clickable model</small></div>
+    <div class="stop"><b>4</b><span>Data design</span><small>Decide what to remember</small></div>
+    <div class="stop"><b>5</b><span>API design</span><small>Decide how the parts talk</small></div>
+    <div class="stop"><b>6</b><span>Backend and database</span><small>Build the hidden engine</small></div>
+    <div class="stop"><b>7</b><span>Frontend</span><small>Build the screens people use</small></div>
+    <div class="stop"><b>8</b><span>Testing</span><small>Check that everything works</small></div>
+    <div class="stop next"><b>9</b><span>Put it online</span><small>So anyone can use it</small></div>
+    <div class="stop next"><b>10</b><span>Improve</span><small>Learn from real users</small></div>
+  </div>
+  <p class="key"><span><i></i>Done</span><span><i class="d"></i>Next</span></p>
+  <p class="foot">How I built GoldenDose · 2</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Steps 1 to 3 · Plan</p>
+  <h2>First, understand the people</h2>
+  <p class="lead">Before writing any code, I decided who the app is for and what it must do.</p></div>
+  <div class="row">
+    <div class="card"><p class="n">Step 1</p><h3>Requirements</h3>
+      <p>I wrote down the problem, and who has it: Kamala, who takes many pills, and Priya, her daughter. Then I listed what the app must do.</p>
+      <p class="like">Like telling the architect how many rooms you need.</p></div>
+    <div class="card"><p class="n">Step 2</p><h3>UX design</h3>
+      <p>I planned every journey, step by step: setting up a medicine, the alarm ringing, tapping "Taken", the family getting a message.</p>
+      <p class="like">Like planning how people walk through the house.</p></div>
+    <div class="card y"><p class="n">Step 3</p><h3>Look and prototype</h3>
+      <p>I chose big text, strong colours and huge buttons. Then I made a clickable model to try the idea before building the real thing.</p>
+      <p class="like">Like a small model of the house, before laying bricks.</p></div>
+  </div>
+  <p class="foot">How I built GoldenDose · 3</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Steps 4 and 5 · Foundation</p>
+  <h2>How an app works: like a restaurant</h2>
+  <p class="lead">Every app has four parts. Steps 4 and 5 planned how they fit together.</p></div>
+  <div class="rest">
+    <div><p class="who">Frontend</p><h3>Dining room</h3><p>The screens Kamala and Priya see and tap.</p></div>
+    <div><p class="who">API</p><h3>Waiter</h3><p>Carries requests to the kitchen and brings back answers.</p></div>
+    <div><p class="who">Backend</p><h3>Kitchen</h3><p>Does the real work: checks, rules and alarm timing.</p></div>
+    <div><p class="who">Database</p><h3>Store room</h3><p>Keeps everything safe: medicines, times, who took what.</p></div>
+  </div>
+  <div class="row">
+    <div class="card"><p class="n">Step 4 · Data design</p><p>I listed what the app must remember, such as people, medicines, doses and alerts, and how they connect. For example, one parent can have many carers.</p></div>
+    <div class="card"><p class="n">Step 5 · API design</p><p>I wrote the waiter's "menu": every request the screens can make, like "show today's medicines" or "mark this dose as taken".</p></div>
+  </div>
+  <p class="foot">How I built GoldenDose · 4</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Steps 6 and 7 · Build</p>
+  <h2>Then I built the real app</h2>
+  <p class="lead">With the plan ready, I built the kitchen first, then the dining room.</p></div>
+  <div class="row">
+    <div class="card"><p class="n">Step 6 · Backend and database</p><h3>The hidden engine</h3>
+      <p>It saves medicines and doses safely, keeps passwords secret, and checks every minute for missed doses. If a dose is 30 minutes late, it tells the family.</p></div>
+    <div class="card y"><p class="n">Step 7 · Frontend</p><h3>Two apps people use</h3>
+      <p><b>Kamala's app:</b> one screen, a loud full-screen alarm, a pill picture, and the name read aloud. It works without internet.</p>
+      <p><b>Priya's family app:</b> add medicines and photos, see today's doses, and choose how to get alerts.</p></div>
+  </div>
+  <p class="foot">How I built GoldenDose · 5</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Step 8 · Check</p>
+  <h2>Then I tested everything</h2>
+  <p class="lead">The computer checks the app for me, like a robot clicking every button. It found real problems, and I fixed them.</p></div>
+  <div class="row" style="align-items:stretch">
+    <div class="card y" style="flex:0 0 420px;justify-content:center"><p style="font-size:120px;font-weight:700;line-height:1">56</p><h3>automatic tests</h3><p>They run in about a minute, any time I change something.</p></div>
+    <div class="list" style="flex:1">
+      <div><b>Easy to read?</b><p>Text size and colour contrast checked for older eyes.</p></div>
+      <div><b>Bug found: squashed picture</b><p>On small screens, the pill photo shrank. Fixed.</p></div>
+      <div><b>Bug found: wrong password</b><p>No message appeared. Now it explains what went wrong.</p></div>
+      <div><b>Bug found: near midnight</b><p>Times wrapped to the next day. Fixed.</p></div>
+    </div>
+  </div>
+  <p class="foot">How I built GoldenDose · 6</p>
+</section>
+
+<section>
+  <div><p class="eyebrow">Getting ready for today</p>
+  <h2>Then I prepared the demo</h2>
+  <p class="lead">A working app is only half the job. People also need to understand it.</p></div>
+  <div class="row">
+    <div class="card"><p class="n">Explain</p><h3>Slides</h3><p>"Why GoldenDose", plus click-by-click slides for every screen.</p></div>
+    <div class="card"><p class="n">Show</p><h3>Videos and guide</h3><p>A recorded demo, a tutorial with screenshots, and a how-to-open guide.</p></div>
+    <div class="card y"><p class="n">Run</p><h3>One-command demo</h3><p>One command resets the app and makes an alarm ring at the exact minute I choose.</p></div>
+  </div>
+  <p class="foot">How I built GoldenDose · 7</p>
+</section>
+
+<section class="green">
+  <div><p class="eyebrow">What comes next, and what I learned</p>
+  <h2>Next: real families</h2></div>
+  <div class="tiles">
+    <div><h3>Test with older people</h3><p>Watch five people use it, and fix what confuses them.</p></div>
+    <div><h3>Put it online</h3><p>So families can use it from anywhere, with real SMS and WhatsApp alerts.</p></div>
+    <div><h3>Phone apps</h3><p>Android and iPhone apps, with alarms on the lock screen.</p></div>
+    <div><h3>Plan before you build</h3><p>Every hour spent planning saved many hours of fixing.</p></div>
+    <div><h3>Design for the user</h3><p>Big, calm and simple helps everyone, not just older people.</p></div>
+    <div><h3>Test all the time</h3><p>Automatic checks catch problems before users ever see them.</p></div>
+  </div>
+  <p style="font-size:34px;margin-top:auto">Thank you. Questions?</p>
+</section>
+
+</body></html>

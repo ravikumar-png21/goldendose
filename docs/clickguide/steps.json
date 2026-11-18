@@ -1,0 +1,1733 @@
+[
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Create an account\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens the sign-up form, for a family member using GoldenDose for the first time.",
+   "The \"Create your family account\" form appears."
+  ],
+  "alt": "Sign in screen with the Create an account link circled",
+  "aside": "Already have an account? Skip to click 8, Sign in."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Your name\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Your name appears in the app (\"Hello, Priya\") and in alert messages.",
+   "Move on to the mobile number."
+  ],
+  "alt": "Create account form with the Your name box circled",
+  "aside": "Example used in this guide: Priya Sharma, Kamala's daughter."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Mobile number\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "SMS and WhatsApp alerts about missed doses are sent to this number.",
+   "Move on to the email."
+  ],
+  "alt": "Create account form with the Mobile number box circled",
+  "aside": "Include the country code, for example +91."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Email\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Your email is how you sign in. Family members invite each other by email too.",
+   "Move on to the password."
+  ],
+  "alt": "Create account form with the Email box circled",
+  "aside": "One account per email address."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Password\" and choose one",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Protects the account. At least 8 characters. It's stored scrambled, never as you typed it.",
+   "Click Create account."
+  ],
+  "alt": "Create account form with the Password box circled",
+  "aside": "A shorter password is refused with the message \"Choose a password of at least 8 characters.\""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Create account\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Creates your account and signs you in on this phone.",
+   "\"Hello, Priya\". Her list is empty, with a box to add the first person she looks after."
+  ],
+  "alt": "Create account form with the Create account button circled",
+  "aside": "If the email already has an account, the app says so and suggests signing in."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Sign out\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Signs this phone out of the account. It's always at the top right.",
+   "Back to Sign in. Next, Priya signs in again, as you would on another day."
+  ],
+  "alt": "Hello, Priya screen with the Sign out link circled at the top right",
+  "aside": "On your own phone you can stay signed in."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Email\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The email you signed up with.",
+   "Move on to the password."
+  ],
+  "alt": "Sign in screen with the Email box circled",
+  "aside": "Capital letters in the email don't matter."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Password\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Proves it's you. The dots hide what you type.",
+   "Click Sign in."
+  ],
+  "alt": "Sign in screen with the Password box circled",
+  "aside": "Forgot it? Ask the main caregiver to invite your new account."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Sign in\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Checks the email and password. If either is wrong, it says \"Email or password is wrong.\"",
+   "\"Hello, Priya\". No one is on her list yet: next, she adds her mother, Kamala."
+  ],
+  "alt": "Sign in screen with the Sign in button circled",
+  "aside": "You stay signed in on this phone until you sign out."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Their name\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The name of the person you look after, as they like to be called. Their phone greets them with it.",
+   "Click Add person."
+  ],
+  "alt": "The Their name box circled",
+  "aside": "Example: Kamala. You can add more people later, such as both parents."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Add person\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Adds Kamala to your list. You become her main caregiver.",
+   "Kamala's setup opens: four short steps."
+  ],
+  "alt": "The Add person button circled",
+  "aside": ""
+ },
+ {
+  "kind": "Step",
+  "app": "Check",
+  "title": "Check: \"Set up Kamala\"",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "Kamala's own setup, step by step: she's added, then her first medicine, her phone, and how you're told.",
+   "Click Add a medicine."
+  ],
+  "alt": "The setup steps circled",
+  "aside": "You can stop at any time and come back from Kamala's page."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Add a medicine\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Step 2 of the setup. Opens the form for Kamala's first medicine. Keep the strip or prescription next to you.",
+   "The \"Add a medicine for Kamala\" form."
+  ],
+  "alt": "Kamala's page with the Add a medicine button circled",
+  "aside": "After saving, the setup comes back, ready for the next step."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Medicine name\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The only required box. Shown in large letters on Kamala's screen and alarm.",
+   "Move on to the strength. Example: Calcium."
+  ],
+  "alt": "Add a medicine form with the Medicine name box circled",
+  "aside": "Left empty, saving shows \"Enter the medicine name.\""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Strength\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The dose, such as \"500 mg\". Shown next to the name and read aloud.",
+   "Move on to the instruction."
+  ],
+  "alt": "Add a medicine form with the Strength box circled",
+  "aside": "Optional, but it helps tell similar medicines apart."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Instruction\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Read aloud to Kamala when the alarm rings. Mention the colour and when: \"Take one orange tablet with water\".",
+   "Move on to what it's for."
+  ],
+  "alt": "Add a medicine form with the Instruction box circled",
+  "aside": "The colour in the instruction helps people who recognise tablets by look rather than name."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"What it's for\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "What the doctor said this medicine is for, such as \"Bone strength\". Kamala's app shows it under the name and reads it aloud.",
+   "Move on to the time."
+  ],
+  "alt": "The What it's for box circled",
+  "aside": "Type a common name such as Glycomet or Telma and GoldenDose suggests what it's usually for. Always go by what the doctor said."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click the time and set it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "When the alarm rings every day. Set the hours, minutes and AM or PM.",
+   "The time is set. Add more times for medicines taken more than once a day."
+  ],
+  "alt": "Add a medicine form with the time box circled",
+  "aside": "In this guide the time is set a couple of minutes ahead, so the alarm rings during the guide."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Add another time\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Adds a second time, for medicines taken twice a day (or more, up to 12 times).",
+   "A new time row appears, ready to set."
+  ],
+  "alt": "Add a medicine form with the Add another time button circled",
+  "aside": "Each time gets its own alarm and its own card on Kamala's Today screen."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Remove\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Deletes a time you don't need. At least one time always stays.",
+   "That row disappears. Back to one time."
+  ],
+  "alt": "Two time rows, with the second row's Remove button circled",
+  "aside": "Calcium in this guide is taken once a day, so the extra time is removed."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Take or choose a photo\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens the camera or photo library. Photograph the strip or tablet: the photo replaces the drawing on Kamala's screen and alarm.",
+   "Your photo shows in the square preview. It's uploaded when you save."
+  ],
+  "alt": "The Take or choose a photo button circled",
+  "aside": "Optional but recommended: people recognise medicine by how it looks. This guide skips the photo and uses the drawing instead."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click a shape: \"Oval\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Sets the shape of the pill drawing, used when there's no photo: Round, Oval or Capsule.",
+   "The chosen shape gets a green border, and the preview changes."
+  ],
+  "alt": "Shape choices with Oval circled",
+  "aside": "Choosing Capsule adds a second colour, for two-colour capsules."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click a colour: \"Orange\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Sets the pill drawing's colour. Choose the real tablet's colour, so it matches what Kamala holds.",
+   "The preview turns into an orange oval tablet."
+  ],
+  "alt": "Colour choices with Orange circled",
+  "aside": "Nine colours: white, cream, yellow, orange, pink, red, blue, green and brown."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Add medicine\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Saves the medicine. Kamala's phone picks it up within a minute.",
+   "Back to Kamala's setup: 1 medicine added. Next, her phone."
+  ],
+  "alt": "The Add medicine button circled at the bottom of the form",
+  "aside": "If something's missing, a message explains what to fix, such as \"Enter the medicine name.\""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Get a connection code\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Step 3 of the setup. Makes a 6-digit code to connect Kamala's phone, so she never needs a password.",
+   "The code appears, with numbered steps to follow on Kamala's phone."
+  ],
+  "alt": "Kamala's phone section with the Get a connection code button circled",
+  "aside": "Use this for a first phone, a new phone, or a bedside tablet."
+ },
+ {
+  "kind": "Step",
+  "app": "Read",
+  "title": "Read the steps for Kamala's phone",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "Open the browser on Kamala's phone, type the address shown, then the 6 digits. The code works once, for 15 minutes.",
+   "Pick up Kamala's phone. Priya's setup waits: Waiting for Kamala's phone to connect."
+  ],
+  "alt": "The connection code box circled: open the address on Kamala's phone and type the 6-digit code",
+  "aside": "Expired or already used? Click Get a new code."
+ },
+ {
+  "kind": "Click",
+  "app": "Kamala's app",
+  "title": "Click the code box and type the 6 digits",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Links this phone to Kamala. The box is extra large so the digits are easy to see.",
+   "Click Connect."
+  ],
+  "alt": "Welcome to GoldenDose screen with the Code box circled",
+  "aside": "A short code shows \"Type all 6 numbers of the code.\" A wrong or expired one shows \"That code didn't work.\""
+ },
+ {
+  "kind": "Click",
+  "app": "Kamala's app",
+  "title": "Click \"Connect\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Connects the phone. It's remembered from now on. This tap also switches on the alarm sound.",
+   "\"Good evening, Kamala\" and today's medicines in time order."
+  ],
+  "alt": "Welcome screen with the code typed and the Connect button circled",
+  "aside": "Browsers only allow sound after one tap. If the app is reopened, a yellow bar asks for one tap."
+ },
+ {
+  "kind": "Step",
+  "app": "Check",
+  "title": "Check: the setup says Connected",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "Back on Priya's phone, without touching anything: the setup turns green by itself. Kamala's phone is connected.",
+   "Click Finish."
+  ],
+  "alt": "The Connected line on Kamala's page circled",
+  "aside": "Kamala's phone shows it too, at the bottom of her list: Connected to your family, with Priya's name."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Finish\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Closes the setup. Everything Kamala needs is ready.",
+   "Kamala's page: today's doses, her medicines, and her phone, Connected."
+  ],
+  "alt": "The Finish button circled",
+  "aside": "Step 4, how you're told about missed doses, is covered in Part E."
+ },
+ {
+  "kind": "Click",
+  "app": "Kamala's app",
+  "title": "Click \"Read aloud\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Speaks the medicine's name, strength and instruction, for when reading is hard.",
+   "The phone speaks. The screen stays the same."
+  ],
+  "alt": "Kamala's Today screen with a Read aloud button circled",
+  "aside": "Every card has a Read aloud button. Cream cards say \"Not taken yet\": late, but she can still tap Taken."
+ },
+ {
+  "kind": "Click",
+  "app": "Kamala's app · The alarm",
+  "title": "When the alarm rings, click \"Taken\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Records the dose as taken, with the time, and stops the alarm. Take the pill first, then tap.",
+   "A green \"Well done\" screen."
+  ],
+  "alt": "Yellow alarm for Calcium 500 mg with the Taken button circled",
+  "aside": "The alarm fills the screen, shows the pill, chimes and reads the instruction. Unanswered, it rings again every 5 minutes; after 30 minutes the family is told."
+ },
+ {
+  "kind": "Step",
+  "app": "Nothing to click",
+  "title": "\"Well done\" confirms it",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "A big green tick and the time it was taken, for 2.5 seconds.",
+   "Back to Today, or straight to the next alarm if another dose is due at the same time (here: Vitamin C)."
+  ],
+  "alt": "Green Well done screen: Taken at 10:26 pm",
+  "aside": "Clear confirmation removes the doubt \"did that work?\""
+ },
+ {
+  "kind": "Click",
+  "app": "Kamala's app · The alarm",
+  "title": "Click \"Skip this dose\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Records the dose as skipped, for when told not to take it today. The alarm stops.",
+   "Back to Today. The card says \"Skipped at…\", and the family sees it in History."
+  ],
+  "alt": "Yellow alarm for Vitamin C with the Skip this dose button circled",
+  "aside": "Skip is smaller and lower than Taken, so it's hard to press by mistake."
+ },
+ {
+  "kind": "Click",
+  "app": "Kamala's app",
+  "title": "Pressed by mistake? Click \"Undo\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Cancels \"Taken\" or \"Skipped\". Works for 5 minutes after the tap.",
+   "The card goes back to \"Due now\" with a Taken button. The alarm waits 5 minutes before ringing again."
+  ],
+  "alt": "Green Calcium card with the Undo button circled",
+  "aside": "After 5 minutes, Undo disappears and the record is final."
+ },
+ {
+  "kind": "Click",
+  "app": "Kamala's app",
+  "title": "Click \"Taken\" on the card",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The same as the alarm's button, from the Today screen. A second tap within a second is ignored.",
+   "\"Well done\", then the card turns green."
+  ],
+  "alt": "Calcium card marked Due now with the Taken button circled",
+  "aside": "A dose can be marked from one hour before its time. Further ahead, the card has no Taken button."
+ },
+ {
+  "kind": "Step",
+  "app": "Done",
+  "title": "The green card means \"done\"",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "A tick and \"Taken at 10:26 pm\". Later, one glance answers \"did I take it?\"",
+   "Back to the family app, to see what Priya sees."
+  ],
+  "alt": "Green Calcium card circled: Taken at 10:26 pm, with Undo",
+  "aside": "Taps made without internet are kept on the phone and sent automatically later."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"← All people\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Goes back to the list of everyone you look after. Back links are always at the top left.",
+   "The people list: Kamala, with ✓ Phone connected."
+  ],
+  "alt": "Kamala's page with the All people back link circled",
+  "aside": "Opening a page again always shows the latest information."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Kamala\" again",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens her page with up-to-date information, including what she just did on her phone.",
+   "Kamala's page, with today's doses and their status."
+  ],
+  "alt": "People list with Kamala's card circled",
+  "aside": "Reloading the page (Cmd + R) also refreshes it."
+ },
+ {
+  "kind": "Step",
+  "app": "Check",
+  "title": "Check today's status",
+  "heads": [
+   "What it shows",
+   "Here"
+  ],
+  "paras": [
+   "Each dose with a label: green \"Taken\" with the time, grey \"Skipped\", red \"Missed\" (an alert was sent), yellow \"Due now\", or \"Later\".",
+   "Calcium shows \"Taken 10:26 pm\" and Vitamin C shows \"Skipped\", exactly as Kamala tapped."
+  ],
+  "alt": "Today's list with the Calcium row circled, showing Taken 10:26 pm",
+  "aside": "This guide was made in the evening, so earlier demo doses show as Missed.",
+  "example": true
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Last 7 days\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Shows every recorded dose for the past week, to spot patterns or answer the doctor.",
+   "History, newest day first, with \"4 of 5 taken\" for each day."
+  ],
+  "alt": "Kamala's page with the Last 7 days link circled",
+  "aside": "Yesterday in the demo data shows a missed Vitamin D3.",
+  "example": true
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"← Kamala\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Returns to Kamala's page from history.",
+   "Kamala's page."
+  ],
+  "alt": "Last 7 days page with the Kamala back link circled",
+  "aside": "The browser's Back button works too.",
+  "example": true
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"How you're told about missed doses\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens your alert choices and the invite form. It's at the bottom of the person's page.",
+   "The \"Alerts and family\" page."
+  ],
+  "alt": "Kamala's page with the How you're told about missed doses card circled",
+  "aside": "The card's second line shows your current choices, such as \"SMS, WhatsApp, App\"."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click a checkbox: \"SMS\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Turns SMS alerts on or off for you. Tick any mix of SMS, WhatsApp and app notification. Each family member chooses their own.",
+   "The tick disappears. Nothing is saved until you click Save."
+  ],
+  "alt": "Alerts and family page with the SMS checkbox circled",
+  "aside": "Alerts are sent 30 minutes after a dose was due and not taken. In the test version they appear in the Terminal, not on phones."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Save\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Saves your alert choices for this person.",
+   "A green \"Saved\" appears above the button."
+  ],
+  "alt": "Alerts form with the Save button circled",
+  "aside": "Choices are per person: Priya gets WhatsApp and app alerts for her father, and all three for her mother."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Their email\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The email of a family member to invite, such as Priya's sister Meera. They need their own GoldenDose account first.",
+   "Choose what they can do."
+  ],
+  "alt": "Invite family form with the Their email box circled",
+  "aside": "Only the main caregiver sees the Invite family section."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"What can they do?\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens a list of two roles. <b>Helper</b>: see and change medicines. <b>Main caregiver</b>: also invite others.",
+   "Pick one (Helper is already chosen), then click Invite."
+  ],
+  "alt": "Invite form with the What can they do? dropdown circled",
+  "aside": "Both roles can choose their own alerts."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Invite\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Links that person to Kamala, so they can see her medicines and get alerts too.",
+   "A green confirmation appears."
+  ],
+  "alt": "Invite form with the Invite button circled",
+  "aside": "No account with that email? The message says \"Ask them to sign up first.\""
+ },
+ {
+  "kind": "Step",
+  "app": "Done",
+  "title": "The invitation worked",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "\"Meera Iyer can now see Kamala's medicines.\" Kamala now has more than one caregiver.",
+   "Next time Meera signs in, Kamala appears in her list."
+  ],
+  "alt": "Green message circled: Meera Iyer can now see Kamala's medicines",
+  "aside": "One caregiver can look after several people, and one person can have several caregivers."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"← Kamala\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Returns to Kamala's page, to manage her medicines.",
+   "Kamala's page, with her medicines listed."
+  ],
+  "alt": "Alerts and family page with the Kamala back link circled",
+  "aside": "The back link always names the page it returns to."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click a medicine: \"Amlodipine\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens it to change any detail (name, strength, instruction, times, photo, shape, colour), then Save changes.",
+   "The \"Change Amlodipine\" form, filled in with its current details."
+  ],
+  "alt": "Medicines list with Amlodipine circled",
+  "aside": "Changes reach Kamala's phone within a minute."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Stop Amlodipine\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Starts stopping a medicine the doctor has stopped. It's at the bottom of the form, and it asks first.",
+   "A question: \"Stop Amlodipine?\" with \"Yes, stop it\" and \"Keep it\"."
+  ],
+  "alt": "Change Amlodipine form with the Stop Amlodipine button circled",
+  "aside": "Stopping is reversible: open the medicine again and save to restart it."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Keep it\" (or \"Yes, stop it\")",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "<b>Keep it</b> cancels. <b>Yes, stop it</b> ends the reminders. Past records are kept, so history still makes sense.",
+   "Keep it: the question closes. Yes, stop it: back to Kamala's page, without that medicine."
+  ],
+  "alt": "Stop Amlodipine question with the Keep it button circled",
+  "aside": "This guide chooses Keep it, so the demo data stays the same."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Tablets in hand now\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Starts the medicine meter. Count the tablets you have; a line shows how many days they last and when to order.",
+   "Click Save changes."
+  ],
+  "alt": "The Change Amlodipine form with the Tablets in hand now box circled",
+  "aside": "Count again whenever you buy more. Tablets in each dose: use 0.5 for half a tablet."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Save changes\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Saves the count. The medicine now shows about how many days are left.",
+   "Kamala's page. The medicine shows the days left and an Order by date. When it's time to order, a Running low box appears and the family gets a message."
+  ],
+  "alt": "The Save changes button circled",
+  "aside": "The meter says \"about\": it counts by the schedule, so recount now and then."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Language, hospital and chemist\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens the settings for Kamala's app language, her emergency hospital and your chemist.",
+   "The Language, hospital and chemist page."
+  ],
+  "alt": "Kamala's page with the Language, hospital and chemist card circled",
+  "aside": "Any family member who looks after Kamala can change these."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Choose a language: \"हिन्दी (Hindi)\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Kamala's app changes to this language: buttons, messages and Read aloud. Nine languages, including English.",
+   "Fill in the hospital."
+  ],
+  "alt": "The language list circled",
+  "aside": "Hindi, Bengali, Marathi, Telugu, Tamil, Gujarati, Kannada, Malayalam or English. Medicine names show as you type them."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Hospital phone number\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The hospital Kamala's emergency button offers to call, as well as the ambulance (108).",
+   "Move on to your chemist."
+  ],
+  "alt": "The Hospital phone number box circled",
+  "aside": "Use the hospital's emergency (casualty) number if it has one."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Chemist's WhatsApp number\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Your own chemist. When a medicine runs low, you can send them the list on WhatsApp in one tap.",
+   "Click Save."
+  ],
+  "alt": "The Chemist's WhatsApp number box circled",
+  "aside": "Include the country code: +91 for India."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Save\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Saves the language, hospital and chemist. Kamala's phone shows the new language straight away.",
+   "A green \"Saved\" appears."
+  ],
+  "alt": "The Save button circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"← Kamala\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Back to Kamala's page.",
+   "The Running low box, now with an Order on WhatsApp button."
+  ],
+  "alt": "The back link to Kamala circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Order on WhatsApp\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens WhatsApp with the order already written to your chemist. Nothing is sent until you press Send.",
+   "Check the message in WhatsApp, then send it."
+  ],
+  "alt": "The Order on WhatsApp from Sharma Medical button circled",
+  "aside": "It uses your own WhatsApp, so it costs nothing."
+ },
+ {
+  "kind": "Click",
+  "app": "Kamala's app",
+  "title": "Click \"इमरजेंसी\" (Emergency)",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Tells every family member at once, on every channel, with a map link if the phone shares its location.",
+   "The emergency screen, in Kamala's language."
+  ],
+  "alt": "Kamala's app in Hindi with the Emergency button circled",
+  "aside": "The family is told the moment it is pressed."
+ },
+ {
+  "kind": "Click",
+  "app": "Kamala's app",
+  "title": "Click \"City Hospital को फ़ोन करें\" (Call City Hospital)",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Calls the hospital. \"Call ambulance 108\" calls the ambulance, and \"Nearest hospitals\" opens the map.",
+   "When help has come, or if it was a mistake: I'm OK."
+  ],
+  "alt": "The emergency screen with the Call City Hospital button circled",
+  "aside": "A web page can't dial by itself, so Kamala taps to call."
+ },
+ {
+  "kind": "Click",
+  "app": "Kamala's app",
+  "title": "Click \"मैं ठीक हूँ\" (I'm OK)",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Tells the family Kamala is OK. They should still call to check.",
+   "Back to Today."
+  ],
+  "alt": "The I'm OK button circled",
+  "aside": ""
+ },
+ {
+  "kind": "Step",
+  "app": "Check",
+  "title": "Check: the emergency banner",
+  "heads": [
+   "What it does",
+   "Here"
+  ],
+  "paras": [
+   "A red banner at the top of Kamala's page: when the button was pressed, and when she said she's OK.",
+   "Call Kamala to check, even after \"I'm OK\"."
+  ],
+  "alt": "Kamala's page on Priya's phone with the red emergency banner circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Doctor visit report\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens a report of the last 30 days: what was taken, missed and skipped, for each medicine.",
+   "The report. Choose 30, 60 or 90 days."
+  ],
+  "alt": "The Doctor visit report card circled",
+  "aside": "Take it to every doctor's visit.",
+  "example": true
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Print or save as PDF\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens the print screen. Choose Save as PDF to keep a copy, or print it for the doctor.",
+   "A tidy page with every medicine, what it's for, and how often it was taken."
+  ],
+  "alt": "The Print or save as PDF button circled",
+  "aside": "Download spreadsheet is just below it, for anyone who likes Excel.",
+  "example": true
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Share summary on WhatsApp\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens WhatsApp with a short summary ready to send to your family or the doctor.",
+   "Choose who to send it to. Nothing is sent until you press Send."
+  ],
+  "alt": "The Share summary on WhatsApp button circled",
+  "aside": "It uses your own WhatsApp, so it costs nothing.",
+  "example": true
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"← Kamala\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Back to Kamala's page.",
+   "Kamala's page, with Records and reports."
+  ],
+  "alt": "The back link circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Prescriptions\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens the prescriptions page: photos and PDFs from the doctor, kept in one place.",
+   "The Prescriptions page."
+  ],
+  "alt": "The Prescriptions card circled",
+  "aside": "Only Kamala's family can see them."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Take a photo\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens the camera. Take a clear photo of the whole prescription.",
+   "The photo uploads, and boxes for the doctor and date appear."
+  ],
+  "alt": "The Take a photo button circled",
+  "aside": "Or click Choose a photo or PDF for one you already have."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Doctor\" and type the name",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Who wrote the prescription, such as \"Dr. S. Rao\".",
+   "Move on to the date."
+  ],
+  "alt": "The Doctor box circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Date on the prescription\" and set it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The date written on the prescription.",
+   "Click Save details."
+  ],
+  "alt": "The date box circled",
+  "aside": "A note is optional: \"Sugar review, next visit in 3 months\"."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Save details\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Saves the doctor and date with the photo.",
+   "The prescription in the list, with Open, Edit details and Remove."
+  ],
+  "alt": "The Save details button circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"← Kamala\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Back to Kamala's page.",
+   "Kamala's page."
+  ],
+  "alt": "The back link circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Change history\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens every change to Kamala's medicines and settings: who made it, when, and why.",
+   "The Change history page."
+  ],
+  "alt": "The Change history card circled",
+  "aside": "Brothers and sisters sharing the care always know what changed."
+ },
+ {
+  "kind": "Step",
+  "app": "Read",
+  "title": "Read the change history",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "Newest first: the prescription just added, Kamala's language, the tablets counted, the medicine added.",
+   "Below it: the medicine list on any past date."
+  ],
+  "alt": "The change history list circled",
+  "aside": "If the main caregiver switches on approval, a helper's medicine changes wait here for their OK."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"← Kamala\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Back to Kamala's page.",
+   "Kamala's page."
+  ],
+  "alt": "The back link circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Setup check\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Shows what's set up and what's still to do, such as a photo for every medicine.",
+   "The Setup check page."
+  ],
+  "alt": "The Setup check card circled",
+  "aside": ""
+ },
+ {
+  "kind": "Step",
+  "app": "Check",
+  "title": "Check what's left to set up",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "A green tick for each thing that's done. Anything not done says how to fix it; tap it to go there.",
+   "Finish the rest when you have a moment."
+  ],
+  "alt": "The setup list circled",
+  "aside": "It updates by itself as you add photos, counts and numbers."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"← Kamala\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Back to Kamala's page.",
+   "Kamala's page."
+  ],
+  "alt": "The back link circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Ask\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens Ask GoldenDose: ask about Kamala's medicines in plain words, in any language.",
+   "The Ask panel, with ready-made questions."
+  ],
+  "alt": "The Ask button circled",
+  "aside": "Answers come only from Kamala's records. It never gives medical advice: for doses or symptoms, ask the doctor."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"What is each medicine for?\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Asks one of the ready-made questions.",
+   "The answer appears in a moment."
+  ],
+  "alt": "The question circled",
+  "aside": ""
+ },
+ {
+  "kind": "Step",
+  "app": "Read",
+  "title": "Read the answer",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "Each medicine and what it's for, from Kamala's records.",
+   "Type another question, or close the panel."
+  ],
+  "alt": "The answer circled",
+  "aside": "Try: \"How did she do this week?\" or \"Is anything running low?\""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Close\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Closes the Ask panel.",
+   "Kamala's page."
+  ],
+  "alt": "The Close link circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Health records\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens Kamala's health records: blood reports, tests the doctor wants repeated, blood pressure, weight, sugar, questions for the doctor and the next visit.",
+   "The Health records page."
+  ],
+  "alt": "The Health records card circled",
+  "aside": "GoldenDose reminds you; the doctor decides."
+ },
+ {
+  "kind": "Step",
+  "app": "Check",
+  "title": "Check the reminders",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "GoldenDose noticed Kamala takes medicines for blood pressure and diabetes, and suggests regular checks.",
+   "Next, add her latest blood report."
+  ],
+  "alt": "The reminders circled",
+  "aside": "Suggestions like these stay in the app; they're never sent as messages."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Add a blood report\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens the form for a new report: its date, the lab, a photo or PDF, and the numbers that matter.",
+   "The Add a blood report form."
+  ],
+  "alt": "The Add a blood report button circled",
+  "aside": "Keep the paper report next to you."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Choose a test: \"HbA1c\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Picks the test from a list of common ones. The unit fills in by itself.",
+   "Type the result."
+  ],
+  "alt": "The Test list circled",
+  "aside": "Another test? Choose Another test… at the bottom and type its name."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Result\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The number on the report, here 8.2.",
+   "Type the range printed on the report."
+  ],
+  "alt": "The Result box circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Range on the report: from\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The low end of the normal range printed next to that result on the report, here 4.",
+   "Type the high end."
+  ],
+  "alt": "The range box circled",
+  "aside": "Always the lab's own range: GoldenDose never uses ranges of its own."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"to\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The high end of the printed range, here 5.6.",
+   "Click Save report."
+  ],
+  "alt": "The second range box circled",
+  "aside": "Add another result for each test that matters, such as creatinine or cholesterol."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Save report\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Saves the report and its results.",
+   "Back to Health records, with the report and a reminder."
+  ],
+  "alt": "The Save report button circled",
+  "aside": "A photo or PDF of the report can be added on the same form."
+ },
+ {
+  "kind": "Step",
+  "app": "Check",
+  "title": "Check: outside the printed range",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "8.2 is above the range printed on the report (4–5.6), so GoldenDose asks: has Kamala's doctor seen it?",
+   "Share it with the doctor, then mark it as seen."
+  ],
+  "alt": "The reminder circled",
+  "aside": "It stays on the list until you mark it. The family is also sent one message."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Share with the doctor\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens WhatsApp with the results written out, ready to send to the doctor or the family.",
+   "Choose who to send it to. Nothing is sent until you press Send."
+  ],
+  "alt": "The Share with the doctor button circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Doctor has seen it\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Records that the doctor has seen the report. The reminder goes away.",
+   "The report shows ✓ Doctor has seen it."
+  ],
+  "alt": "The Doctor has seen it button circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Choose how often to repeat it: \"Every 3 months\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "As the doctor said. GoldenDose works out when the next test is due.",
+   "The next due date appears. You're reminded a week before, and if it's overdue."
+  ],
+  "alt": "The Repeat list circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Choose \"Remind me to check blood pressure\": \"Every week\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "How often the family should take a BP reading.",
+   "Add the target the doctor gave."
+  ],
+  "alt": "The reminder list circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Type the doctor's target",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The top and bottom numbers the doctor gave, here 140/90.",
+   "Click Save."
+  ],
+  "alt": "The target boxes circled",
+  "aside": "Only the doctor's target: GoldenDose then tells you when a reading is above it."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Save\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Saves the BP reminders and target.",
+   "A reminder: No blood pressure reading yet."
+  ],
+  "alt": "The Save button circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Top number\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The top number from the BP machine, here 162.",
+   "Type the bottom number."
+  ],
+  "alt": "The Top number box circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Bottom number\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The bottom number, here 95.",
+   "Click Save reading."
+  ],
+  "alt": "The Bottom number box circled",
+  "aside": "A pulse can be added too."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Save reading\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Saves the reading with the time.",
+   "The latest reading, and a reminder."
+  ],
+  "alt": "The Save reading button circled",
+  "aside": ""
+ },
+ {
+  "kind": "Step",
+  "app": "Check",
+  "title": "Check: above the doctor's target",
+  "heads": [
+   "What it shows",
+   "What happens next"
+  ],
+  "paras": [
+   "162/95 is above the target the doctor gave (140/90). GoldenDose suggests sharing the readings with the doctor.",
+   "Next, a question for the doctor."
+  ],
+  "alt": "The reminder circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"New question\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Anything to ask at the next visit, such as whether a tablet can be taken with dinner.",
+   "Click Add."
+  ],
+  "alt": "The New question box circled",
+  "aside": "Anyone in the family can add questions, whenever they think of them."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Add\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Adds it to the list. Questions print with the doctor visit report.",
+   "The question in the list, with Answered and Remove."
+  ],
+  "alt": "The Add button circled",
+  "aside": "After the visit, click Answered and note what the doctor said."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Weight (kg)\" and type it",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Today's weight, here 58.5. Choose a reminder to weigh regularly if you like.",
+   "Click Save."
+  ],
+  "alt": "The Weight box circled",
+  "aside": "A change of 5% or more in about a month is flagged as worth telling the doctor."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Save\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Saves the weight. Blood sugar works the same way, just below.",
+   "The latest weight."
+  ],
+  "alt": "The Save button circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Type your lab's WhatsApp number",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "The lab you use, so home sample collections can be booked in one tap.",
+   "Click Save."
+  ],
+  "alt": "The lab's WhatsApp number box circled",
+  "aside": "Many labs in India collect samples at home."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Save\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Saves the lab.",
+   "A Book a home collection button appears, for the tests the doctor wants repeated."
+  ],
+  "alt": "The Save button circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Book a home collection\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Opens WhatsApp with a message to the lab listing the tests, asking for a day and time.",
+   "Check it in WhatsApp, then send it."
+  ],
+  "alt": "The Book a home collection button circled",
+  "aside": "It uses your own WhatsApp, so it costs nothing."
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"← Kamala\"",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Back to Kamala's page.",
+   "Kamala's page."
+  ],
+  "alt": "The back link circled",
+  "aside": ""
+ },
+ {
+  "kind": "Click",
+  "app": "Family app",
+  "title": "Click \"Sign out\" when finished",
+  "heads": [
+   "What it does",
+   "What happens next"
+  ],
+  "paras": [
+   "Signs this phone out. Do this on a shared or borrowed phone.",
+   "Back to the Sign in screen. Kamala's phone stays connected."
+  ],
+  "alt": "Change Amlodipine page with the Sign out link circled at the top right",
+  "aside": "On your own phone you can stay signed in."
+ }
+]

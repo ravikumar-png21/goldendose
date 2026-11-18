@@ -1,0 +1,421 @@
+<title>GoldenDose Build Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a long-form study journal. A step rail at the top, then one "chapter" per build step,
+   each with the same parts so it can be revised and compared. */
+:root {
+  --bg: #F3F6F5; --surface: #FFFFFF; --ink: #15302A; --muted: #4E6660; --line: #CFDAD6;
+  --accent: #1F6F5C; --accent-soft: #DCEFE8; --pill: #F2C14E; --pill-ink: #5A4106;
+  --warn-bg: #FFF1DC; --warn-ink: #6B3A00; --code-bg: #EAF0EE;
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "Atkinson Hyperlegible", Verdana, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1A17; --surface: #16241F; --ink: #E4EEEA; --muted: #A3B8B1; --line: #2A3D37;
+    --accent: #6CCFB1; --accent-soft: #1C3A31; --pill: #F2C14E; --pill-ink: #2A1E02;
+    --warn-bg: #33260F; --warn-ink: #F2B66B; --code-bg: #1B2B26; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1A17; --surface: #16241F; --ink: #E4EEEA; --muted: #A3B8B1; --line: #2A3D37;
+  --accent: #6CCFB1; --accent-soft: #1C3A31; --pill: #F2C14E; --pill-ink: #2A1E02;
+  --warn-bg: #33260F; --warn-ink: #F2B66B; --code-bg: #1B2B26; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 1.1rem; line-height: 1.65; padding-inline: 18px; padding-block: 0 72px; }
+.wrap { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 64px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.3rem); font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: 1.9rem; font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 500; }
+p { margin: 0; max-width: 66ch; }
+a { color: var(--accent); }
+code { font-family: var(--font-mono); font-size: 0.88em; background: var(--code-bg); padding: 1px 6px; border-radius: 4px; overflow-wrap: anywhere; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.lede { font-size: 1.2rem; color: var(--muted); }
+section, article { display: flex; flex-direction: column; gap: 18px; }
+
+header.hero { padding-top: 52px; display: flex; flex-direction: column; gap: 16px; }
+
+/* Step rail */
+.rail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.rail a { display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; height: 100%; }
+.rail a:hover { border-color: var(--accent); }
+.rail .n { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--accent); }
+.rail .t { font-size: 0.9rem; line-height: 1.3; }
+.rail .s { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.rail .next a { border-style: dashed; }
+@media (max-width: 640px) { .rail { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Chapters */
+article.step { background: var(--surface); border: 1.5px solid var(--line); border-radius: 20px; padding: 28px; gap: 22px; scroll-margin-top: 16px; }
+.step-head { display: flex; gap: 16px; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 12px; flex-wrap: wrap; }
+.step-head .big { font-family: var(--font-display); font-size: 2.6rem; font-weight: 700; color: var(--accent); line-height: 1; }
+.question { font-size: 1.2rem; font-style: italic; color: var(--muted); }
+.block { display: flex; flex-direction: column; gap: 8px; }
+.block > .label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.block ul, .block ol { margin: 0; padding-left: 1.25em; display: flex; flex-direction: column; gap: 6px; }
+.files { display: flex; flex-wrap: wrap; gap: 8px; }
+.files code { background: var(--accent-soft); color: var(--ink); padding: 4px 10px; border-radius: 999px; }
+dl.terms { margin: 0; display: grid; grid-template-columns: minmax(110px, 170px) 1fr; gap: 8px 18px; }
+dl.terms dt { font-weight: 700; }
+dl.terms dd { margin: 0; color: var(--muted); }
+@media (max-width: 560px) { dl.terms { grid-template-columns: 1fr; gap: 0; } dl.terms dd { margin-bottom: 10px; } article.step { padding: 20px; } }
+.lesson { background: var(--warn-bg); color: var(--warn-ink); border-radius: 14px; padding: 14px 16px; }
+.lesson b { display: block; margin-bottom: 2px; }
+details { border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 16px; background: var(--bg); }
+details + details { margin-top: 8px; }
+summary { cursor: pointer; font-weight: 700; }
+details p { margin-top: 8px; color: var(--muted); }
+
+.table-wrap { overflow-x: auto; border: 1.5px solid var(--line); border-radius: 14px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 1rem; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--font-display); font-weight: 500; background: var(--accent-soft); }
+tr:last-child td { border-bottom: 0; }
+
+.pitch { background: var(--ink); color: var(--bg); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+.pitch .eyebrow { color: var(--pill); }
+.pitch p { font-size: 1.15rem; }
+footer { color: var(--muted); font-size: 0.95rem; border-top: 1px solid var(--line); padding-top: 18px; }
+:focus-visible { outline: 3px solid #1F4FD1; outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">GoldenDose · build journal</span>
+    <h1>How GoldenDose was built, step by step</h1>
+    <p class="lede">The whole process behind the app, in plain words: the question each step answers, what we did, what it produced, the ideas worth remembering, the decisions and why, and what went wrong. Each step ends with questions to check yourself.</p>
+    <p>For the five parts of an app (frontend, API, backend, database, hosting), see the companion page, <a href="https://claude.ai/artifact/GhFvAdXjoxPmz6wUQEf1mR">Inside a Medicine App</a>.</p>
+  </header>
+
+  <section aria-labelledby="map-title">
+    <span class="eyebrow">The map</span>
+    <h2 id="map-title">Ten steps, in order</h2>
+    <p>Steps 1 to 5 are planning. Only in step 6 does the real code begin. That order is the most important lesson of the whole project: every hour of planning saved many hours of rebuilding.</p>
+    <ol class="rail">
+      <li><a href="#step-1"><span class="n">1</span><span class="t">Requirements</span><span class="s">done</span></a></li>
+      <li><a href="#step-2"><span class="n">2</span><span class="t">UX design</span><span class="s">done</span></a></li>
+      <li><a href="#step-3"><span class="n">3</span><span class="t">UI design</span><span class="s">done</span></a></li>
+      <li><a href="#step-4"><span class="n">4</span><span class="t">Data design</span><span class="s">done</span></a></li>
+      <li><a href="#step-5"><span class="n">5</span><span class="t">API design</span><span class="s">done</span></a></li>
+      <li><a href="#step-6"><span class="n">6</span><span class="t">Backend</span><span class="s">done</span></a></li>
+      <li><a href="#step-7"><span class="n">7</span><span class="t">Frontend</span><span class="s">done</span></a></li>
+      <li><a href="#step-8"><span class="n">8</span><span class="t">Testing</span><span class="s">in progress</span></a></li>
+      <li class="next"><a href="#step-9"><span class="n">9</span><span class="t">Deploy</span><span class="s">next</span></a></li>
+      <li class="next"><a href="#step-9"><span class="n">10</span><span class="t">Iterate</span><span class="s">ongoing</span></a></li>
+    </ol>
+  </section>
+
+  <!-- STEP 1 -->
+  <article class="step" id="step-1">
+    <div class="step-head"><span class="big">1</span><h2>Requirements</h2></div>
+    <p class="question">What must the app do, and for whom?</p>
+    <div class="block"><span class="label">What we did</span>
+      <ol>
+        <li>Started from <b>real observation</b>: you wrote down six things an older person struggles with on a phone.</li>
+        <li>Turned the people into two <b>personas</b>: Kamala (the elder) and Priya (her daughter, the caregiver).</li>
+        <li>Wrote <b>16 user stories</b> ("As Kamala, I want…, so that…"), each marked Must, Should or Later.</li>
+        <li>Turned vague wishes into <b>testable numbers</b>: "big text" became "at least 24px", "big buttons" became "at least 64px tall".</li>
+        <li>Wrote what we would <b>not</b> build (out of scope), and <b>acceptance criteria</b> in Given / When / Then form.</li>
+        <li>Recorded the decisions: web app first, then Android and iPhone; caregivers and elders many-to-many; alerts by SMS, WhatsApp or app.</li>
+      </ol>
+    </div>
+    <div class="block"><span class="label">What it produced</span><div class="files"><code>docs/REQUIREMENTS.md</code></div></div>
+    <div class="block"><span class="label">Ideas worth remembering</span>
+      <dl class="terms">
+        <dt>Persona</dt><dd>An imaginary person who stands for your real users. "Would Kamala understand this?" is easier to answer than "would users?"</dd>
+        <dt>User story</dt><dd>A requirement written from the user's side: who, what, and why.</dd>
+        <dt>Priority</dt><dd>Must / Should / Later. Stops a project from trying to do everything at once.</dd>
+        <dt>Non-functional requirement</dt><dd>How well it must work (text size, contrast, works offline), not what it does.</dd>
+        <dt>Acceptance criteria</dt><dd>"Given…, when…, then…": how we'll know a feature is finished.</dd>
+        <dt>Scope</dt><dd>The edge of the project. Writing down what's out is as useful as what's in.</dd>
+      </dl>
+    </div>
+    <p class="lesson"><b>Lesson</b>Your note "reminders are the most important" led to a hidden requirement: the alarm must work without internet. So the schedule is kept on the phone, not only on the server. Requirements work finds problems while they're cheap to fix.</p>
+    <div class="block"><span class="label">Check yourself</span>
+      <details><summary>Why write "buttons at least 64px tall" instead of "big buttons"?</summary><p>Because a number can be tested. In Step 8 a robot measures every button. "Big" means different things to different people.</p></details>
+      <details><summary>Who are Kamala and Priya?</summary><p>Personas, not real people. Kamala stands for the older users; Priya for the family caregivers. Their needs come from your field notes.</p></details>
+    </div>
+  </article>
+
+  <!-- STEP 2 -->
+  <article class="step" id="step-2">
+    <div class="step-head"><span class="big">2</span><h2>UX design</h2></div>
+    <p class="question">How does each person move through the app, and what can go wrong on the way?</p>
+    <div class="block"><span class="label">What we did</span>
+      <ol>
+        <li>Wrote <b>five user journeys</b>: taking a pill, pressing Taken by mistake, missing the alarm, "did I take it?", and Priya adding a medicine.</li>
+        <li>For every step asked: what could go wrong, and how does the design prevent it or make it easy to recover?</li>
+        <li>Drew the <b>screen map</b>. Kamala's side has only two screens: Today and the alarm.</li>
+        <li>Sketched rough <b>wireframes</b> of the three key screens before choosing any colours.</li>
+      </ol>
+    </div>
+    <div class="block"><span class="label">What it produced</span><div class="files"><code>docs/UX-FLOWS.md</code><code>wireframes (in our chat)</code></div></div>
+    <div class="block"><span class="label">Ideas worth remembering</span>
+      <dl class="terms">
+        <dt>UX</dt><dd>User experience: how the app feels to use. UI is how it looks.</dd>
+        <dt>User journey</dt><dd>A short story of someone using the app to get one thing done.</dd>
+        <dt>Unhappy path</dt><dd>What happens when things go wrong: a mistaken tap, a missed alarm, no internet.</dd>
+        <dt>Error prevention</dt><dd>Making mistakes hard: a dose more than an hour away has no Taken button.</dd>
+        <dt>Error recovery</dt><dd>Making mistakes cheap: Undo for 5 minutes.</dd>
+        <dt>Wireframe</dt><dd>A plain sketch of what goes where, with no colour or polish.</dd>
+      </dl>
+    </div>
+    <div class="block"><span class="label">Decisions and why</span>
+      <ul>
+        <li><b>Kamala never sees "missed" in red.</b> It would worry her. She sees "Not taken yet"; Priya sees "Missed", because she has to act.</li>
+        <li><b>Setup is the caregiver's job.</b> No settings for Kamala to get lost in.</li>
+        <li><b>The alarm repeats every 5 minutes</b> until Taken or Skip, then alerts the family at 30 minutes.</li>
+      </ul>
+    </div>
+    <div class="block"><span class="label">Check yourself</span>
+      <details><summary>Why spend time on the "unhappy path"?</summary><p>Because that's where older users get stuck or frightened. A happy path that works is not enough; a mistaken tap or a missed alarm must be handled calmly.</p></details>
+    </div>
+  </article>
+
+  <!-- STEP 3 -->
+  <article class="step" id="step-3">
+    <div class="step-head"><span class="big">3</span><h2>UI design and the prototype</h2></div>
+    <p class="question">Exactly how does it look, and does it feel right before we build it for real?</p>
+    <div class="block"><span class="label">What we did</span>
+      <ol>
+        <li>Wrote a <b>design system</b>: one typeface (Atkinson Hyperlegible, made for low vision), named colours, text sizes and button sizes.</li>
+        <li>Checked every text colour against its background: all at least <b>7:1 contrast</b>, the strictest level.</li>
+        <li>Built a <b>clickable prototype</b> in HTML, CSS and JavaScript with made-up data and a pretend clock, so the alarm could be tried without waiting.</li>
+        <li>You tried it, and we fixed what you found.</li>
+      </ol>
+    </div>
+    <div class="block"><span class="label">What it produced</span><div class="files"><code>docs/DESIGN-SYSTEM.md</code><code>prototype/index.html</code><code>prototype/styles.css</code><code>prototype/app.js</code></div></div>
+    <div class="block"><span class="label">Ideas worth remembering</span>
+      <dl class="terms">
+        <dt>Design token</dt><dd>A named design value, like <code>--go: #0B5A2F</code>. Change it once, and every screen follows.</dd>
+        <dt>Contrast ratio</dt><dd>How much text stands out from its background. 7:1 is the strictest standard (WCAG AAA).</dd>
+        <dt>Touch target</dt><dd>The area a finger can hit. Ours are 64–72px, against a common 44–48px.</dd>
+        <dt>Prototype</dt><dd>A version that looks and feels real but uses fake data. Cheap to change.</dd>
+        <dt>HTML / CSS / JS</dt><dd>The walls, the paint and the wiring of a page.</dd>
+      </dl>
+    </div>
+    <p class="lesson"><b>Lesson</b>The alarm locked scrolling so Kamala couldn't scroll away, but that also hid our testing buttons. Your report found it. Every design decision has side effects, and testing by hand is how you find them.</p>
+    <div class="block"><span class="label">Check yourself</span>
+      <details><summary>What is a design token, and why use one?</summary><p>A named value such as a colour or size. Both apps read the same tokens from <code>shared/tokens.css</code>, so they always match, and a change happens in one place.</p></details>
+      <details><summary>Why does the zero in GoldenDose have a slash through it?</summary><p>The typeface was designed so similar characters (0 and O, 1 and l) look clearly different, which matters for doses and times.</p></details>
+    </div>
+  </article>
+
+  <!-- STEP 4 -->
+  <article class="step" id="step-4">
+    <div class="step-head"><span class="big">4</span><h2>Data design</h2></div>
+    <p class="question">What must the app remember, and how is it organised?</p>
+    <div class="block"><span class="label">What we did</span>
+      <ol>
+        <li>Listed the things the app must remember, and gave each a <b>table</b>: caregivers, elders, care_links, medicines, schedules, dose_log, devices, notifications.</li>
+        <li>Gave every row an <b>id</b>, and linked tables with <b>foreign keys</b> (a column holding another table's id).</li>
+        <li>Used your two "yes" answers to design <code>care_links</code>, a table of caregiver–elder pairs.</li>
+        <li>Made the database itself refuse a second record for the same dose on the same day.</li>
+      </ol>
+    </div>
+    <div class="block"><span class="label">What it produced</span><div class="files"><code>docs/DATA-DESIGN.md</code><code>backend/src/schema.sql</code> (in Step 6)</div></div>
+    <div class="block"><span class="label">Ideas worth remembering</span>
+      <dl class="terms">
+        <dt>Table, row, column</dt><dd>Like a spreadsheet: one table per kind of thing, one row per item, one column per fact.</dd>
+        <dt>Primary key (id)</dt><dd>A number that names a row forever.</dd>
+        <dt>Foreign key</dt><dd>A column pointing to another table's id: how tables link.</dd>
+        <dt>One-to-many</dt><dd>One medicine has many times: Metformin at 08:00 and 20:00.</dd>
+        <dt>Many-to-many</dt><dd>Caregivers ↔ elders, both ways. Needs a "join table" in the middle: <code>care_links</code>.</dd>
+        <dt>Unique constraint</dt><dd>A rule the database enforces itself: no duplicate dose per day.</dd>
+        <dt>Soft delete</dt><dd>A stopped medicine is marked inactive, not erased, so history still makes sense.</dd>
+      </dl>
+    </div>
+    <div class="block"><span class="label">Check yourself</span>
+      <details><summary>Why can't "caregiver" just be one column in the elders table?</summary><p>Because Kamala can have two caregivers, and Priya can look after two elders. One column holds one value. A table of pairs holds any number.</p></details>
+      <details><summary>Why are passwords never stored?</summary><p>We store a one-way scramble (a hash). Even if the database were stolen, the passwords couldn't be read.</p></details>
+    </div>
+  </article>
+
+  <!-- STEP 5 -->
+  <article class="step" id="step-5">
+    <div class="step-head"><span class="big">5</span><h2>API design</h2></div>
+    <p class="question">Exactly which requests can the screens send, and what comes back?</p>
+    <div class="block"><span class="label">What we did</span>
+      <ol>
+        <li>Listed about <b>20 requests</b> in 6 groups: accounts, elders, pairing, medicines, today, history.</li>
+        <li>For each: the <b>method</b> (GET, POST, PUT, DELETE), the <b>path</b>, an example request and reply, and the error message when it fails.</li>
+        <li>Decided how callers prove who they are: caregivers sign in; Kamala's phone is <b>paired</b> with a 6-digit code.</li>
+        <li>Described the <b>background job</b> that checks for missed doses every minute.</li>
+      </ol>
+    </div>
+    <div class="block"><span class="label">What it produced</span><div class="files"><code>docs/API-DESIGN.md</code></div></div>
+    <div class="block"><span class="label">Ideas worth remembering</span>
+      <dl class="terms">
+        <dt>Endpoint</dt><dd>One address in the API, such as <code>/api/doses</code>.</dd>
+        <dt>Method</dt><dd>GET = read, POST = create, PUT = change, DELETE = remove.</dd>
+        <dt>Status code</dt><dd>200 OK, 201 Created, 204 done with nothing to send, 400 bad request, 401 not signed in, 403 not allowed, 404 not found, 409 conflict.</dd>
+        <dt>JSON</dt><dd>The text format for data: <code>{ "status": "taken" }</code>.</dd>
+        <dt>Token</dt><dd>A long secret sent with every request, like a wristband at an event.</dd>
+        <dt>Background job</dt><dd>Work the backend does on its own, on a timer.</dd>
+      </dl>
+    </div>
+    <div class="block"><span class="label">Check yourself</span>
+      <details><summary>What does 409 mean when Kamala taps Taken twice?</summary><p>Conflict: "already marked as taken at 9:02 am." The second tap is refused, so nothing is counted twice.</p></details>
+      <details><summary>Why design the API before writing code?</summary><p>It's the contract between frontend and backend. With it agreed, both sides can be built separately and still fit together.</p></details>
+    </div>
+  </article>
+
+  <!-- STEP 6 -->
+  <article class="step" id="step-6">
+    <div class="step-head"><span class="big">6</span><h2>Backend and database</h2></div>
+    <p class="question">How do we make the rules real, and keep them safe?</p>
+    <div class="block"><span class="label">What we did</span>
+      <ol>
+        <li>Set up <b>Git</b> save points, then built the backend with <b>Node.js</b> and <b>Express</b>.</li>
+        <li>Created the tables in <b>SQLite</b> (one file) from <code>schema.sql</code>.</li>
+        <li>Wrote one file per group of requests, plus <b>validation</b> (check every input), <b>security</b> (hashed passwords, hashed tokens, "do you look after this person?") and <b>time zones</b> (9:00 means 9:00 where Kamala lives).</li>
+        <li>Built the <b>missed-dose check</b>: every minute, marks doses 30 minutes late as missed and alerts each caregiver by their chosen channels (simulated for now).</li>
+        <li>Wrote <b>33 automatic tests</b> using a pretend clock, and a guided tour script.</li>
+      </ol>
+    </div>
+    <div class="block"><span class="label">What it produced</span><div class="files"><code>backend/src/</code><code>backend/test/api.test.js</code><code>backend/README.md</code></div></div>
+    <div class="block"><span class="label">Ideas worth remembering</span>
+      <dl class="terms">
+        <dt>Validation</dt><dd>Never trust input. "27:90" is not a time; an empty name is refused with a clear message.</dd>
+        <dt>Hashing</dt><dd>A one-way scramble for passwords and tokens.</dd>
+        <dt>Transaction</dt><dd>Several changes saved together, or none: a medicine is never saved without its times.</dd>
+        <dt>Middleware</dt><dd>Code that runs before every request, such as "who is calling?"</dd>
+        <dt>Automated test</dt><dd>A small program that uses the app and checks the result, every time.</dd>
+        <dt>Git commit</dt><dd>A snapshot of the whole project you can go back to.</dd>
+      </dl>
+    </div>
+    <p class="lesson"><b>Lesson</b>Building revealed a gap: a medicine added at 3 pm with an 8 am time would instantly count as "missed". We fixed it, wrote a test for it, and recorded it in the data design. Real building always finds details the plan missed.</p>
+    <div class="block"><span class="label">Check yourself</span>
+      <details><summary>Why does the backend check rules that the screens also check?</summary><p>The screens run on people's phones and can be tampered with. The backend is the one place that can't, so it enforces every rule. The screens check too, only to give quick feedback.</p></details>
+      <details><summary>What is the "pretend clock" for?</summary><p>Tests can jump to 9:30 to check the 30-minute rule without waiting. The same idea as the prototype's "Jump ahead 10 minutes".</p></details>
+    </div>
+  </article>
+
+  <!-- STEP 7 -->
+  <article class="step" id="step-7">
+    <div class="step-head"><span class="big">7</span><h2>Frontend</h2></div>
+    <p class="question">How do the screens use the real backend, and stay kind to their users?</p>
+    <div class="block"><span class="label">What we did</span>
+      <ol>
+        <li>Turned the approved prototype into <b>Kamala's app</b>: pairing, Today and the alarm, now using real data.</li>
+        <li>Built <b>Priya's family app</b>: sign in, people, medicines with photos, pairing codes, 7-day history, alert choices, invite family.</li>
+        <li>Put shared pieces in one folder: design tokens, the API helper, pill drawings.</li>
+        <li>Made Kamala's app <b>work offline</b>: the last list is saved on the phone; a tap made offline is saved and sent later.</li>
+        <li>Protected against <b>code injection</b>: every typed name passes through <code>esc()</code>.</li>
+        <li>Tested end to end in the browser: added a medicine, paired a phone, watched the alarm ring at 6:59 pm.</li>
+      </ol>
+    </div>
+    <div class="block"><span class="label">What it produced</span><div class="files"><code>frontend/index.html</code><code>frontend/elder.js</code><code>frontend/care/</code><code>frontend/shared/</code></div></div>
+    <div class="block"><span class="label">Ideas worth remembering</span>
+      <dl class="terms">
+        <dt>Single-page app</dt><dd>One page whose content changes with the address after <code>#</code>; the browser never reloads.</dd>
+        <dt>XSS</dt><dd>Cross-site scripting: an attack that hides code inside typed text. Escaping text prevents it.</dd>
+        <dt>Offline-first</dt><dd>Keep working without internet, and catch up when it returns.</dd>
+        <dt>localStorage</dt><dd>A small store in the browser that survives closing the app.</dd>
+        <dt>Pairing</dt><dd>Connecting a device with a one-time code instead of a password.</dd>
+      </dl>
+    </div>
+    <p class="lesson"><b>Lessons</b>Testing by hand found three problems: a grey "000000" made the code box look already filled; a failed photo upload could create a duplicate medicine; times wrapped onto two lines. All small, all things a real user would have hit.</p>
+    <div class="block"><span class="label">Check yourself</span>
+      <details><summary>What happens if Kamala taps Taken with no internet?</summary><p>She sees the green tick straight away. The tap is saved on the phone, and sent automatically when the internet returns.</p></details>
+      <details><summary>Why can't the web version ring on a locked phone?</summary><p>Browsers aren't allowed to wake a locked phone. That's why the Android and iPhone apps are a later stage.</p></details>
+    </div>
+  </article>
+
+  <!-- STEP 8 -->
+  <article class="step" id="step-8">
+    <div class="step-head"><span class="big">8</span><h2>Testing</h2></div>
+    <p class="question">How do we prove it works, and that real people can use it?</p>
+    <div class="block"><span class="label">What we did</span>
+      <ol>
+        <li>Added <b>browser tests</b> with Playwright: a robot uses the real screens on a phone-sized display (20 tests).</li>
+        <li>Added <b>accessibility scans</b> with axe: Kamala's screens pass the strictest level, WCAG AAA.</li>
+        <li>Wrote a <b>test plan</b> linking every requirement to the test that proves it.</li>
+        <li>Wrote a <b>user-testing script</b> for watching a real older person use the app.</li>
+        <li>Set up the demo: one command, a live API log, a database peek, a demo script and runbook.</li>
+      </ol>
+    </div>
+    <div class="block"><span class="label">What it produced</span><div class="files"><code>e2e/</code><code>docs/TEST-PLAN.md</code><code>docs/USER-TESTING.md</code><code>docs/DEMO-SCRIPT.md</code></div></div>
+    <div class="block"><span class="label">Ideas worth remembering</span>
+      <dl class="terms">
+        <dt>End-to-end test</dt><dd>Tests the whole system from screen to database, like a person would.</dd>
+        <dt>Accessibility</dt><dd>Usable by people with low vision, shaky hands or screen readers. WCAG is the standard.</dd>
+        <dt>Traceability</dt><dd>Every requirement has a test that proves it.</dd>
+        <dt>User testing</dt><dd>Watching real people use it, without helping. Finds confusion that no robot can.</dd>
+      </dl>
+    </div>
+    <p class="lesson"><b>Lesson</b>The first run found a real bug: a wrong password on the family sign-in showed no message at all. The code treated it as "sign-in expired" and silently reloaded. Tests find bugs before users do.</p>
+    <div class="block"><span class="label">Check yourself</span>
+      <details><summary>What does automatic testing catch, and what does user testing catch?</summary><p>Automatic tests catch bugs: things that don't work. User testing catches confusion: things that work but are hard to understand. You need both.</p></details>
+      <details><summary>How many automatic tests are there, and how do you run them?</summary><p>56 in total (33 backend, 23 browser and accessibility). From the medstracker folder, run <code>npm test</code>.</p></details>
+    </div>
+  </article>
+
+  <!-- STEP 9-10 -->
+  <article class="step" id="step-9">
+    <div class="step-head"><span class="big">9–10</span><h2>Deploy, then iterate</h2></div>
+    <p class="question">How does it reach real families, and keep getting better?</p>
+    <div class="block"><span class="label">What's planned</span>
+      <ul>
+        <li><b>Hosting:</b> run the backend on an always-on server with a real web address and HTTPS.</li>
+        <li><b>PostgreSQL:</b> the database built for many users at once.</li>
+        <li><b>Real alerts:</b> SMS and WhatsApp through a messaging provider; app notifications.</li>
+        <li><b>Security for the open internet:</b> limits on password and pairing-code guessing.</li>
+        <li><b>Continuous integration:</b> the 56 tests run automatically on every change.</li>
+        <li><b>Phone apps:</b> the same code wrapped for Android and iPhone, with lock-screen alarms.</li>
+        <li><b>Iterate:</b> user testing with five people, fix what confuses them, repeat.</li>
+      </ul>
+    </div>
+    <p class="lesson"><b>Before starting</b>This stage needs accounts and small monthly costs, so options and prices are compared first, for a decision with your boss.</p>
+  </article>
+
+  <section aria-labelledby="map2-title">
+    <span class="eyebrow">Where everything lives</span>
+    <h2 id="map2-title">The project folder</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Folder</th><th>Part of the app</th><th>Look here for</th></tr></thead>
+      <tbody>
+        <tr><td><code>docs/</code></td><td>Planning</td><td>Requirements, UX flows, design system, data and API design, test plan, demo script</td></tr>
+        <tr><td><code>prototype/</code></td><td>Design</td><td>The clickable prototype from Step 3 (needs no backend)</td></tr>
+        <tr><td><code>frontend/</code></td><td>Frontend</td><td>Kamala's app, the family app, shared tokens and the API helper</td></tr>
+        <tr><td><code>backend/src/</code></td><td>API, backend, database</td><td>Routes, rules, security, the missed-dose check, the table definitions</td></tr>
+        <tr><td><code>backend/test/</code>, <code>e2e/</code></td><td>Testing</td><td>Backend tests, browser and accessibility tests</td></tr>
+        <tr><td><code>scripts/</code></td><td>Demo</td><td>The one-command demo starter</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="tools-title">
+    <span class="eyebrow">Tools</span>
+    <h2 id="tools-title">What we used, and why</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Tool</th><th>What it is</th><th>Why this one</th></tr></thead>
+      <tbody>
+        <tr><td>HTML, CSS, JavaScript</td><td>The languages of web pages</td><td>Run in every browser, no build step, easiest to learn from</td></tr>
+        <tr><td>Node.js</td><td>Runs JavaScript on a computer, not just in a browser</td><td>One language for frontend and backend</td></tr>
+        <tr><td>Express</td><td>A toolkit for building APIs in Node.js</td><td>The most widely used, well documented</td></tr>
+        <tr><td>SQLite → PostgreSQL</td><td>Databases</td><td>SQLite is a single file, ideal for learning; PostgreSQL for real users</td></tr>
+        <tr><td>Playwright and axe</td><td>Browser testing and accessibility checking</td><td>Industry standards, run with one command</td></tr>
+        <tr><td>Git</td><td>Save points for the whole project</td><td>Go back to any working version in seconds</td></tr>
+        <tr><td>npm</td><td>Installs packages and runs commands</td><td>Comes with Node.js; <code>npm run demo</code>, <code>npm test</code></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="pitch" aria-labelledby="pitch-title">
+    <span class="eyebrow">Say it in 60 seconds</span>
+    <h2 id="pitch-title">Explaining GoldenDose to anyone</h2>
+    <p>"GoldenDose helps older people take their medicines and tells their family when they don't. The elder's app is one screen with a loud, full-screen alarm that shows the pill and reads the instruction. The family app sets everything up and gets an alert if a dose is 30 minutes late."</p>
+    <p>"Behind the scenes, the screens talk to a backend through an API. The backend checks every rule and stores everything in a database. We built it in the order professionals do: requirements from watching a real older person, then design, then data and API plans, then code, then 56 automatic tests. Next, we put it online and test it with real families."</p>
+  </section>
+
+  <footer>Built step by step, October 2026. Concepts: <a href="https://claude.ai/artifact/GhFvAdXjoxPmz6wUQEf1mR">Inside a Medicine App</a>.</footer>
+</div>

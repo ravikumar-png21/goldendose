@@ -1,0 +1,38 @@
+/*
+  GoldenDose design tokens, shared by Kamala's app and the caregiver app.
+  Every value comes from docs/DESIGN-SYSTEM.md. Change a value here and both apps follow.
+*/
+:root {
+  --paper: #F6F5F0;
+  --card: #FFFFFF;
+  --ink: #141414;
+  --ink-soft: #45453F;
+  --line: #8A8A82;
+  --line-soft: #D6D5CE;
+  --go: #0B5A2F;
+  --go-bg: #E3F2E7;
+  --alarm: #FFD23F;
+  --wait: #6B3A00;
+  --wait-bg: #FFF1DC;
+  --skip-bg: #ECEBE5;
+  --stop: #8C1D18;
+  --stop-bg: #FBE9E7;
+  --focus: #1F4FD1;
+
+  --font: "Atkinson Hyperlegible", Verdana, "Segoe UI", sans-serif;
+
+  --radius-card: 20px;
+  --radius-button: 16px;
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+h1, h2, h3, p { margin: 0; }
+:focus-visible { outline: 4px solid var(--focus); outline-offset: 4px; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}

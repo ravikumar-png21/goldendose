@@ -1,0 +1,353 @@
+<title>GoldenDose App Tutorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: a manual. Each screen is a two-column "spread": the phone screenshot on one side,
+   what you see / what to do / why on the other. Stacks to one column on phones. */
+:root {
+  --paper: #F6F5F0; --card: #FFFFFF; --ink: #141414; --soft: #45453F; --line: #D6D5CE;
+  --go: #0B5A2F; --go-bg: #E3F2E7; --alarm: #FFD23F; --wait: #6B3A00; --wait-bg: #FFF1DC;
+  --font: "Atkinson Hyperlegible", Verdana, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --paper: #121412; --card: #1B1E1B; --ink: #ECEDE8; --soft: #B5B8B0; --line: #2E322D; --go: #7FD3A2; --go-bg: #1A3326; --wait: #F2B66B; --wait-bg: #33260F; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --paper: #121412; --card: #1B1E1B; --ink: #ECEDE8; --soft: #B5B8B0; --line: #2E322D; --go: #7FD3A2; --go-bg: #1A3326; --wait: #F2B66B; --wait-bg: #33260F; color-scheme: dark; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 18px; line-height: 1.6; padding-inline: 16px; padding-block: 0 72px; }
+.wrap { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
+h1 { font-size: clamp(2rem, 6vw, 3rem); }
+h2 { font-size: 1.9rem; }
+h3 { font-size: 1.35rem; }
+p { margin: 0; max-width: 66ch; }
+a { color: var(--ink); }
+code { background: var(--line); padding: 1px 6px; border-radius: 5px; font-size: 0.9em; overflow-wrap: anywhere; }
+.eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--go); }
+.lede { font-size: 1.15rem; color: var(--soft); }
+header.hero { padding-top: 44px; display: flex; flex-direction: column; gap: 14px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.links a { font-weight: 700; background: var(--card); border: 2px solid var(--ink); border-radius: 12px; padding: 10px 16px; text-decoration: none; }
+.links a.primary { background: var(--go); border-color: var(--go); color: #FFFFFF; }
+
+nav.toc { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 20px 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+nav.toc ol { margin: 6px 0 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 2px; }
+nav.toc b { font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); }
+
+.part-head { display: flex; flex-direction: column; gap: 10px; border-top: 3px solid var(--ink); padding-top: 18px; }
+
+.spread { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 32px; align-items: start; scroll-margin-top: 16px; }
+.spread figure { margin: 0; position: sticky; top: 16px; }
+.spread img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 24px; border: 6px solid var(--ink); background: var(--card); }
+.spread img.part { border-width: 2px; border-radius: 18px; }
+.spread figcaption { font-size: 0.85rem; color: var(--soft); margin-top: 8px; }
+.text { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.num { font-weight: 700; color: var(--go); }
+.box { display: grid; grid-template-columns: 6em 1fr; gap: 10px; }
+.box > b { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); padding-top: 4px; }
+.box ul, .box ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px; }
+.box > div { min-width: 0; }
+.why { background: var(--go-bg); border-radius: 12px; padding: 12px 14px; }
+.tip { background: var(--wait-bg); color: var(--wait); border-radius: 12px; padding: 12px 14px; }
+.tall figure { max-height: none; }
+@media (max-width: 720px) {
+  .spread { grid-template-columns: 1fr; gap: 16px; }
+  .spread figure { position: static; max-width: 300px; }
+  .box { grid-template-columns: 1fr; gap: 2px; }
+}
+
+.tasks { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.task { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.task ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 3px; }
+.table-wrap { overflow-x: auto; border: 1.5px solid var(--line); border-radius: 14px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; font-size: 1rem; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--go-bg); }
+tr:last-child td { border-bottom: 0; }
+footer { color: var(--soft); border-top: 1px solid var(--line); padding-top: 18px; font-size: 0.95rem; }
+:focus-visible { outline: 3px solid #1F4FD1; outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">GoldenDose · app tutorial</span>
+    <h1>Every screen, and how to use it</h1>
+    <p class="lede">A screen-by-screen guide to both apps: Kamala's app (for the older person) and Priya's family app (for the caregiver). For each screen: what you see, what to do, and why it's designed that way.</p>
+    <div class="links">
+      <a class="primary" href="https://claude.ai/artifact/Wy48DqQN2hZQ1s15tG4fZw">Watch the tutorial video</a>
+      <a href="#open">How to open the app</a>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Contents">
+    <div><b>Part 1 · Kamala's app</b><ol>
+      <li><a href="#k-pair">Connecting the phone</a></li>
+      <li><a href="#k-today">Today</a></li>
+      <li><a href="#k-cards">The four kinds of card</a></li>
+      <li><a href="#k-alarm">The alarm</a></li>
+      <li><a href="#k-done">Taken, and Undo</a></li>
+      <li><a href="#k-offline">Without internet</a></li>
+    </ol></div>
+    <div><b>Part 2 · Priya's family app</b><ol>
+      <li><a href="#c-signin">Sign in and create an account</a></li>
+      <li><a href="#c-people">The people you look after</a></li>
+      <li><a href="#c-person">One person's page</a></li>
+      <li><a href="#c-medicine">Adding a medicine</a></li>
+      <li><a href="#c-stop">Stopping a medicine</a></li>
+      <li><a href="#c-history">History</a></li>
+      <li><a href="#c-alerts">Alerts and family</a></li>
+    </ol></div>
+    <div><b>Part 3 · Quick help</b><ol>
+      <li><a href="#tasks">Everyday tasks</a></li>
+      <li><a href="#trouble">If something isn't working</a></li>
+      <li><a href="#open">How to open the app</a></li>
+    </ol></div>
+  </nav>
+
+  <!-- ===================== PART 1 ===================== -->
+  <section class="part-head">
+    <span class="eyebrow">Part 1</span>
+    <h2>Kamala's app</h2>
+    <p class="lede">For the older person, on their phone or a bedside tablet. Deliberately tiny: a connection screen used once, the Today screen, and the alarm. Nothing to set up, no settings to get lost in.</p>
+  </section>
+
+  <section class="spread" id="k-pair">
+    <figure><img src="img/k1-pairing.jpg" alt="Welcome to GoldenDose screen with a large code box and a Connect button" width="390" height="844"><figcaption>Connecting the phone</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">1.</span> Connecting the phone (once)</h3>
+      <div class="box"><b>You see</b><div>"Welcome to GoldenDose", a large box for a 6-digit code, and a Connect button.</div></div>
+      <div class="box"><b>Do</b><ol>
+        <li>The family member opens the family app and taps <b>Get a connection code</b> on the person's page.</li>
+        <li>Type the 6 digits into the box and tap <b>Connect</b>.</li>
+        <li>That's it: the phone is remembered from now on, even after closing it.</li>
+      </ol></div>
+      <p class="why"><b>Why:</b> passwords are one of the biggest barriers for older people. A one-time code, typed once by a family member if needed, removes that barrier completely.</p>
+      <figure style="max-width:260px;position:static"><img class="part" src="img/k2-pairing-error.jpg" alt="The same screen with the message: Type all 6 numbers of the code" width="390" height="844"><figcaption>A wrong or short code gets a plain message, never an error code.</figcaption></figure>
+      <p class="tip">Codes work once, for 15 minutes. If it says "That code didn't work", ask for a new one.</p>
+    </div>
+  </section>
+
+  <section class="spread" id="k-today">
+    <figure><img src="img/k3-today.jpg" alt="Today screen: Good evening, Kamala, progress dots, 1 of 6 medicines taken, and a highlighted Metformin card" width="390" height="844"><figcaption>The Today screen</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">2.</span> Today: the only screen she needs</h3>
+      <div class="box"><b>You see</b><ul>
+        <li>The date and a greeting: "Good evening, Kamala".</li>
+        <li>Progress dots and "1 of 6 medicines taken today". Filled dots are doses taken.</li>
+        <li>One card per dose, <b>in time order</b>. The one to act on has a <b>thick black border</b>.</li>
+      </ul></div>
+      <div class="box"><b>Do</b><ul>
+        <li>Tap <b>Taken</b> after taking a pill.</li>
+        <li>Tap <b>Read aloud</b> to hear the name, strength and instruction.</li>
+        <li>Scroll down to see later doses.</li>
+      </ul></div>
+      <p class="why"><b>Why:</b> one screen means nothing to get lost in. Text is about twice normal size, in a typeface made for low vision, and every colour passes the strictest contrast standard.</p>
+    </div>
+  </section>
+
+  <section class="spread" id="k-cards">
+    <figure><img class="part" src="img/k6-card-soon.jpg" alt="A white card for Vitamin B12 due later with a Taken button" width="390" height="400"><figcaption>Due soon: Taken is already allowed</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">3.</span> The four kinds of card</h3>
+      <p>Every card is told apart by its <b>words and border</b>, not just its colour.</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Card</th><th>Means</th><th>Can tap</th></tr></thead>
+        <tbody>
+          <tr><td><b>White, "Due at…" or "Due now"</b></td><td>Within the hour before the dose, or due now</td><td>Taken, Read aloud</td></tr>
+          <tr><td><b>Cream, "Not taken yet"</b></td><td>More than 30 minutes late. The family has been told</td><td>Taken (late), Read aloud</td></tr>
+          <tr><td><b>Dashed, "Later today"</b></td><td>More than an hour away</td><td>Read aloud only</td></tr>
+          <tr><td><b>Green, "Taken at 8:14 pm"</b></td><td>Done</td><td>Undo (5 minutes), Read aloud</td></tr>
+        </tbody>
+      </table></div>
+      <figure style="max-width:300px;position:static"><img class="part" src="img/k4-card-not-taken.jpg" alt="A cream card: Not taken yet. It was due at 8:00 am, with a Taken button" width="390" height="460"><figcaption>"Not taken yet": calm brown, never "missed" in red.</figcaption></figure>
+      <figure style="max-width:300px;position:static"><img class="part" src="img/k5-card-later.jpg" alt="A dashed card for Atorvastatin marked Later today, with only Read aloud" width="390" height="360"><figcaption>"Later today": no Taken button, so it can't be pressed by mistake.</figcaption></figure>
+      <p class="why"><b>Why:</b> the word "missed" in red would worry her. She sees a gentle "Not taken yet"; the family sees "Missed", because they're the ones who act.</p>
+    </div>
+  </section>
+
+  <section class="spread" id="k-alarm">
+    <figure><img src="img/k7-alarm.jpg" alt="Full-screen yellow alarm: 8:14 pm, Time for your medicine, an orange oval pill, Calcium 500 mg, Take one orange tablet with water, Taken and Skip this dose buttons" width="390" height="844"><figcaption>The alarm</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">4.</span> The alarm</h3>
+      <div class="box"><b>You see</b><ul>
+        <li>The whole screen turns yellow, with the time and "Time for your medicine".</li>
+        <li>A <b>picture of the pill</b> (or the family's photo of it), the name and the instruction.</li>
+        <li>A chime, and the instruction <b>read aloud</b>.</li>
+      </ul></div>
+      <div class="box"><b>Do</b><ul>
+        <li>Take the pill, then tap the big green <b>Taken</b>.</li>
+        <li>Or tap <b>Skip this dose</b> if told not to take it today.</li>
+      </ul></div>
+      <div class="box"><b>Then</b><div>If nobody answers, it rings for a minute, goes quiet, and rings again every 5 minutes. After 30 minutes it stops and the family is told.</div></div>
+      <p class="tip">Browsers only allow sound after one tap. If you see "Tap anywhere to hear the alarm", tap the screen once. On a bedside tablet, the app keeps the screen awake after that first tap.</p>
+    </div>
+  </section>
+
+  <section class="spread" id="k-done">
+    <figure><img src="img/k8-well-done.jpg" alt="Green screen with a large tick: Well done, Taken at 8:14 pm" width="390" height="844"><figcaption>Well done</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">5.</span> Taken, and Undo</h3>
+      <div class="box"><b>You see</b><div>A big green tick and "Well done, Taken at 8:14 pm" for a moment. Then the card turns green with the time and an <b>Undo</b> button.</div></div>
+      <figure style="max-width:300px;position:static"><img class="part" src="img/k9-card-taken.jpg" alt="A green Calcium card: Taken at 8:14 pm, with Undo and Read aloud" width="390" height="460"><figcaption>Later, one glance answers "did I take it?"</figcaption></figure>
+      <div class="box"><b>Do</b><ul>
+        <li>Pressed by mistake? Tap <b>Undo</b> within 5 minutes. The card goes back to "Due now", and the alarm waits 5 minutes before ringing again.</li>
+        <li>A second tap within a second is ignored, so a shaky hand can't count a pill twice.</li>
+      </ul></div>
+      <p class="why"><b>Why:</b> mistakes are cheap to fix, so she's never afraid of the app. And the green tick with a time is the answer to "did I already take it?"</p>
+    </div>
+  </section>
+
+  <section class="spread" id="k-offline">
+    <figure><img src="img/k10-offline.jpg" alt="Today screen with the banner: No internet right now. Reminders still work. A message at the bottom: Your tap is saved and will be sent automatically" width="390" height="844"><figcaption>Without internet</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">6.</span> Without internet</h3>
+      <div class="box"><b>You see</b><div>A cream banner, "No internet right now. Reminders still work." If she taps Taken, a message says her tap is saved.</div></div>
+      <div class="box"><b>Do</b><div>Nothing different. Use it normally. When the internet returns, the banner disappears and saved taps are sent automatically.</div></div>
+      <p class="why"><b>Why:</b> Wi-Fi drops shouldn't mean a missed pill. The medicine list is kept on the phone, so alarms still ring.</p>
+    </div>
+  </section>
+
+  <!-- ===================== PART 2 ===================== -->
+  <section class="part-head">
+    <span class="eyebrow">Part 2</span>
+    <h2>Priya's family app</h2>
+    <p class="lede">For the caregiver: set up medicines, connect the elder's phone, see what was taken, and choose how to be alerted. Opens at <code>/care/</code>.</p>
+  </section>
+
+  <section class="spread" id="c-signin">
+    <figure><img src="img/c1-sign-in.jpg" alt="Sign in screen with email and password fields" width="390" height="844"><figcaption>Sign in</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">7.</span> Sign in, or create an account</h3>
+      <div class="box"><b>Do</b><ul>
+        <li><b>New:</b> tap <b>Create an account</b>. Enter your name, mobile number (for SMS and WhatsApp alerts), email and a password of at least 8 characters.</li>
+        <li><b>Returning:</b> enter email and password, then <b>Sign in</b>. You stay signed in on this phone.</li>
+      </ul></div>
+      <figure style="max-width:260px;position:static"><img class="part" src="img/c2-create-account.jpg" alt="Create your family account form" width="390" height="844"><figcaption>Create your family account</figcaption></figure>
+      <p class="why"><b>Why:</b> a wrong password says only "Email or password is wrong", so nobody can find out which emails have accounts.</p>
+    </div>
+  </section>
+
+  <section class="spread" id="c-people">
+    <figure><img src="img/c3-people.jpg" alt="Hello, Priya, with Kamala and Ramesh listed and an Add a person form" width="390" height="844"><figcaption>The people you look after</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">8.</span> The people you look after</h3>
+      <div class="box"><b>You see</b><div>Everyone you look after, and whether you're their main caregiver or helping.</div></div>
+      <div class="box"><b>Do</b><ul>
+        <li>Tap a person to open their page.</li>
+        <li>To add someone, type their first name under <b>Add a person</b> and tap <b>Add person</b>. The name is how their app greets them.</li>
+        <li><b>Sign out</b> is at the top right.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="spread tall" id="c-person">
+    <figure><img src="img/c4-person.jpg" alt="Kamala's page: taken and missed counts, today's doses with chips, medicines list, phone connection, alerts" width="390" height="1800"><figcaption>One person's page (scrolled)</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">9.</span> One person's page</h3>
+      <p>Everything about one person, top to bottom:</p>
+      <div class="box"><b>Summary</b><div>"1 of 6 taken today" and, if any, a red "missed" count.</div></div>
+      <div class="box"><b>Today</b><div>Every dose with a chip: <b>Taken 8:14 pm</b> (green), <b>Missed</b> (red), <b>Due now</b> (yellow), <b>Not taken</b> or <b>Later</b>. Tap <b>Last 7 days</b> for history.</div></div>
+      <div class="box"><b>Medicines</b><div>Each medicine with its picture, times and instruction. Tap one to change or stop it. <b>Add a medicine</b> below.</div></div>
+      <div class="box"><b>Their phone</b><div><b>Get a connection code</b> shows a 6-digit code to type on their phone.</div></div>
+      <figure style="max-width:320px;position:static"><img class="part" src="img/c5-connection-code.jpg" alt="Connection code box: On Kamala's phone open the address and type 6 digits. Works once, until a time" width="780" height="360"><figcaption>The code, with the address to open on their phone.</figcaption></figure>
+      <div class="box"><b>Alerts</b><div>How you're told about missed doses, and inviting family.</div></div>
+    </div>
+  </section>
+
+  <section class="spread tall" id="c-medicine">
+    <figure><img src="img/c6-add-medicine.jpg" alt="Add a medicine form: name, strength, instruction, times, photo, shape and colour" width="390" height="2000"><figcaption>Adding a medicine (scrolled)</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">10.</span> Adding a medicine</h3>
+      <div class="box"><b>Fill in</b><ol>
+        <li><b>Medicine name</b> (required) and <b>Strength</b>, such as "40 mg".</li>
+        <li><b>Instruction</b>: it's read aloud, so mention the colour and when, e.g. "Take one yellow tablet before breakfast".</li>
+        <li><b>Times each day</b>: tap <b>Add another time</b> for twice a day; <b>Remove</b> to delete one.</li>
+        <li><b>Photo</b>: tap <b>Take or choose a photo</b> and photograph the strip. Best of all.</li>
+        <li><b>Shape</b> and <b>Colour</b>: used for the drawing when there's no photo. Capsule asks for a second colour.</li>
+        <li>Tap <b>Add medicine</b>. Their phone updates within a minute.</li>
+      </ol></div>
+      <p class="why"><b>Why:</b> people recognise medicine by how it looks, not by its name. The photo and colour appear on the alarm.</p>
+      <p class="tip">Changing a medicine works the same way: tap it in the list, edit, then <b>Save changes</b>.</p>
+    </div>
+  </section>
+
+  <section class="spread" id="c-stop">
+    <figure><img class="part" src="img/c7-stop-medicine.jpg" alt="Stop this medicine section with a confirmation: Stop Amlodipine? Yes, stop it, or Keep it" width="390" height="500"><figcaption>Stopping asks first</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">11.</span> Stopping a medicine</h3>
+      <div class="box"><b>Do</b><ol>
+        <li>Open the medicine and scroll to <b>Stop this medicine</b>.</li>
+        <li>Tap <b>Stop …</b>, then <b>Yes, stop it</b> (or <b>Keep it</b> to cancel).</li>
+      </ol></div>
+      <p class="why"><b>Why:</b> it asks first because it's an important change. Past records are kept, so history still makes sense.</p>
+    </div>
+  </section>
+
+  <section class="spread tall" id="c-history">
+    <figure><img src="img/c8-history.jpg" alt="Last 7 days: Today, Yesterday and earlier days with each dose's status" width="390" height="2000"><figcaption>History (scrolled)</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">12.</span> History: the last 7 days</h3>
+      <div class="box"><b>You see</b><div>Each day, newest first, with "4 of 5 taken" and every recorded dose: <b>Taken</b> with the time, <b>Skipped</b>, or <b>Missed</b>.</div></div>
+      <div class="box"><b>Use it to</b><ul>
+        <li>Spot patterns, such as the lunchtime dose often missed.</li>
+        <li>Answer the doctor's "Has she been taking it regularly?"</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="spread tall" id="c-alerts">
+    <figure><img src="img/c9-alerts-and-family.jpg" alt="Alerts and family: SMS, WhatsApp and App notification checkboxes, and an Invite family form" width="390" height="1400"><figcaption>Alerts and family</figcaption></figure>
+    <div class="text">
+      <h3><span class="num">13.</span> Alerts and family</h3>
+      <div class="box"><b>Alerts</b><div>Tick how you want to hear about a missed dose: <b>SMS</b>, <b>WhatsApp</b>, <b>App notification</b>, any mix. Then <b>Save</b>. Each family member chooses for themselves.</div></div>
+      <div class="box"><b>Invite</b><div>Main caregivers can invite family: enter their email and choose <b>Helper</b> (see and change medicines) or <b>Main caregiver</b> (also invite others). They need a GoldenDose account first.</div></div>
+      <p class="tip">In this test version, alerts appear in the backend's Terminal window, not on phones. Real messages come when GoldenDose goes online.</p>
+    </div>
+  </section>
+
+  <!-- ===================== PART 3 ===================== -->
+  <section id="tasks">
+    <span class="eyebrow">Part 3 · quick help</span>
+    <h2>Everyday tasks, step by step</h2>
+    <div class="tasks">
+      <div class="task"><h3>Set up a parent from scratch</h3><ol><li>Create your account.</li><li>Add a person.</li><li>Add each medicine, with a photo.</li><li>Get a connection code.</li><li>On their phone, open the app and type it.</li><li>Tap their screen once to allow sound.</li></ol></div>
+      <div class="task"><h3>Check whether Mum took her pills</h3><ol><li>Open the family app.</li><li>Tap her name.</li><li>Look at <b>Today</b>: green chips are taken, with the time.</li></ol></div>
+      <div class="task"><h3>Change a dose time</h3><ol><li>Her page → tap the medicine.</li><li>Change the time under <b>Times each day</b>.</li><li><b>Save changes</b>.</li></ol></div>
+      <div class="task"><h3>Add your brother as a carer</h3><ol><li>He creates his own account.</li><li>Her page → <b>How you're told…</b></li><li>Under <b>Invite family</b>, enter his email → <b>Invite</b>.</li></ol></div>
+      <div class="task"><h3>Connect a new phone for her</h3><ol><li>Her page → <b>Get a connection code</b>.</li><li>On the new phone, open the app and type the code.</li></ol></div>
+      <div class="task"><h3>She pressed Taken by mistake</h3><ol><li>On her phone, tap <b>Undo</b> on that card within 5 minutes.</li></ol></div>
+    </div>
+  </section>
+
+  <section id="trouble">
+    <h2>If something isn't working</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Problem</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>The alarm makes no sound</td><td>Tap the screen once. Turn the volume up; on iPhone, turn the silent switch off.</td></tr>
+        <tr><td>The alarm didn't appear</td><td>The web version only rings while the app is open on screen. Keep it open, and set the screen to stay on. The phone-app version will ring on a locked phone.</td></tr>
+        <tr><td>"That code didn't work"</td><td>Codes work once, for 15 minutes. Get a new code.</td></tr>
+        <tr><td>A new medicine isn't on her phone</td><td>It updates within a minute. To see it now, reload the page.</td></tr>
+        <tr><td>"This phone was disconnected"</td><td>Get a new connection code and type it on the phone.</td></tr>
+        <tr><td>"It's too early for this one"</td><td>A dose can be marked from one hour before its time. This prevents mistakes.</td></tr>
+        <tr><td>"This can no longer be undone"</td><td>Undo only works for 5 minutes after tapping Taken.</td></tr>
+        <tr><td>The page can't be reached</td><td>The app isn't running. See "How to open the app" below.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="open">
+    <h2>How to open the app (test version)</h2>
+    <div class="tasks">
+      <div class="task"><h3>1. Start it on the Mac</h3><p>In Terminal: <code>cd ~/Documents/medstracker &amp;&amp; npm run demo</code>. Leave that window open.</p></div>
+      <div class="task"><h3>2. Family app</h3><p>In Safari: <code>http://localhost:3000/care/</code>. Demo sign-in: <code>priya@example.com</code> / <code>goldendose-demo</code>.</p></div>
+      <div class="task"><h3>3. Kamala's app</h3><p>In a second window: <code>http://localhost:3000/</code>, or on a phone on the same Wi-Fi, the "On a phone" address the Terminal prints.</p></div>
+      <div class="task"><h3>4. Stop it</h3><p>Click in the Terminal window and press <b>Ctrl + C</b>.</p></div>
+    </div>
+  </section>
+
+  <footer>GoldenDose app tutorial · screenshots from the real app, October 2026.</footer>
+</div>

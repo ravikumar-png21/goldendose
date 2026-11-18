@@ -1,0 +1,56 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-12T14:05:00Z"
+  },
+  "lists": "css",
+  "title": "GoldenDose Walkthrough",
+  "cover": "cover",
+  "order": [
+    "cover",
+    "problem",
+    "needs",
+    "solution",
+    "records",
+    "principles",
+    "demo",
+    "architecture",
+    "journey",
+    "data",
+    "process",
+    "quality",
+    "limits",
+    "next",
+    "ask"
+  ],
+  "sections": {
+    "s1": {
+      "description": "Why: the problem and the six real needs behind every decision",
+      "start": "cover"
+    },
+    "s2": {
+      "description": "What we built: two apps, the design rules, and the live demo",
+      "start": "solution"
+    },
+    "s3": {
+      "description": "How it works: the five parts, one tap end to end, and the data",
+      "start": "architecture"
+    },
+    "s4": {
+      "description": "How it was built: the ten-step process and how quality is proven",
+      "start": "process"
+    },
+    "s5": {
+      "description": "What's next: honest limits, the next stage, and the decision needed",
+      "start": "limits"
+    }
+  },
+  "faces": {
+    "atkinson-hyperlegible": {
+      "family": "Atkinson Hyperlegible",
+      "href": "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+    }
+  },
+  "designSystems": []
+}

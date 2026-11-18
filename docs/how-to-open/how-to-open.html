@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>How to Open GoldenDose</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  @page { size: A4; margin: 16mm 16mm 18mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Atkinson Hyperlegible", Verdana, sans-serif; font-size: 13.5pt; line-height: 1.5; color: #141414; }
+  h1 { font-size: 30pt; margin: 0 0 4pt; line-height: 1.1; }
+  h2 { font-size: 18pt; margin: 0; line-height: 1.2; }
+  p { margin: 0; }
+  .lede { font-size: 14pt; color: #45453F; margin-bottom: 14pt; }
+  .eyebrow { font-size: 10pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #0B5A2F; }
+  .part { border: 2px solid #141414; border-radius: 14px; padding: 12pt 15pt; margin-bottom: 12pt; break-inside: avoid; }
+  .part-head { display: flex; align-items: center; gap: 12pt; margin-bottom: 10pt; }
+  .badge { flex: none; width: 34pt; height: 34pt; border-radius: 50%; background: #0B5A2F; color: #fff; font-size: 17pt; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  ol { margin: 0; padding-left: 18pt; display: flex; flex-direction: column; gap: 6pt; }
+  li { padding-left: 2pt; }
+  .key { display: inline-block; font-weight: 700; font-size: 11.5pt; padding: 0 6pt; border: 1.5px solid #141414; border-bottom-width: 3px; border-radius: 6px; background: #F6F5F0; white-space: nowrap; }
+  .type { display: block; font-family: "IBM Plex Mono", Menlo, monospace; font-size: 12.5pt; background: #141414; color: #F6F5F0; border-radius: 8px; padding: 7pt 10pt; margin: 4pt 0 2pt; }
+  .note { background: #FFF1DC; color: #6B3A00; border-radius: 10px; padding: 8pt 11pt; margin-top: 10pt; font-size: 12.5pt; }
+  .ok { background: #E3F2E7; color: #0B5A2F; border-radius: 10px; padding: 8pt 11pt; margin-top: 10pt; font-size: 12.5pt; }
+  table { border-collapse: collapse; width: 100%; font-size: 12.5pt; }
+  th, td { text-align: left; padding: 6pt 8pt; border-bottom: 1px solid #D6D5CE; vertical-align: top; }
+  th { background: #E3F2E7; }
+  .keys-table td:first-child { white-space: nowrap; width: 32%; }
+  .page-break { break-before: page; }
+  .footer { margin-top: 10pt; font-size: 10pt; color: #6B6A63; }
+</style>
+</head>
+<body>
+
+<span class="eyebrow">GoldenDose · simple guide</span>
+<h1>How to open the app</h1>
+<p class="lede">GoldenDose has two parts. <b>Priya's family app</b> is for the person who sets up the medicines. <b>Kamala's app</b> is for the older person who takes them. Follow the steps in order.</p>
+
+<div class="part">
+  <div class="part-head"><span class="badge">1</span><h2>Start the app (on the Mac)</h2></div>
+  <ol>
+    <li>Press <span class="key">Cmd</span> + <span class="key">Space</span> together. A search box appears.</li>
+    <li>Type <b>Terminal</b>, then press <span class="key">Return</span>. A window with text opens.</li>
+    <li>Type this line exactly (or copy it, then press <span class="key">Cmd</span> + <span class="key">V</span> to paste):
+      <span class="type">cd ~/Documents/medstracker &amp;&amp; npm run demo</span></li>
+    <li>Press <span class="key">Return</span>.</li>
+    <li>Wait a few seconds. You will see <b>"GoldenDose demo is ready"</b> and an alarm time (⏰). Write down the alarm time.</li>
+  </ol>
+  <p class="note"><b>Important:</b> keep this Terminal window open the whole time. Closing it switches the app off. You can make it smaller, but don't close it.</p>
+</div>
+
+<div class="part">
+  <div class="part-head"><span class="badge">2</span><h2>Open Priya's family app</h2></div>
+  <ol>
+    <li>Press <span class="key">Cmd</span> + <span class="key">Space</span>, type <b>Safari</b>, press <span class="key">Return</span>.</li>
+    <li>Press <span class="key">Cmd</span> + <span class="key">L</span> to go to the address bar at the top.</li>
+    <li>Type this address, then press <span class="key">Return</span>:
+      <span class="type">localhost:3000/care/</span></li>
+    <li>Click the <b>Email</b> box and type: <b>priya@example.com</b></li>
+    <li>Click the <b>Password</b> box and type: <b>goldendose-demo</b></li>
+    <li>Click the green <b>Sign in</b> button.</li>
+  </ol>
+  <p class="ok">You should see <b>"Hello, Priya"</b> with Kamala and Ramesh.</p>
+</div>
+
+<div class="part">
+  <div class="part-head"><span class="badge">3</span><h2>Open Kamala's app</h2></div>
+  <ol>
+    <li>In Safari, press <span class="key">Cmd</span> + <span class="key">N</span> to open a second window.</li>
+    <li>Press <span class="key">Cmd</span> + <span class="key">L</span>, type this address, then press <span class="key">Return</span>:
+      <span class="type">localhost:3000</span></li>
+    <li>You will see <b>"Welcome to GoldenDose"</b> and a box for a code.</li>
+  </ol>
+</div>
+
+<div class="part">
+  <div class="part-head"><span class="badge">4</span><h2>Connect Kamala's app (a one-time code)</h2></div>
+  <ol>
+    <li>Go back to <b>Priya's window</b>. Click <b>Kamala</b>.</li>
+    <li>Scroll down. Click <b>Get a connection code</b>. Six numbers appear, like <b>774 543</b>.</li>
+    <li>Go to <b>Kamala's window</b>. Click the code box and type the six numbers.</li>
+    <li>Click the green <b>Connect</b> button.</li>
+    <li>Click once anywhere on Kamala's screen. This lets the alarm make a sound.</li>
+  </ol>
+  <p class="ok">You should see <b>"Good morning (or afternoon, or evening), Kamala"</b> and her medicines.</p>
+  <p class="note">The code works <b>once</b> and only for <b>15 minutes</b>. If it says "That code didn't work", click <b>Get a new code</b> in Priya's window.</p>
+</div>
+
+<div class="part">
+  <div class="part-head"><span class="badge">5</span><h2>Watch the alarm ring</h2></div>
+  <ol>
+    <li>Keep Kamala's window open and on the screen.</li>
+    <li>Turn the Mac's volume up.</li>
+    <li>At the alarm time you wrote down in step 1, the screen turns yellow, chimes, and reads the medicine aloud.</li>
+    <li>Click the big green <b>Taken</b> button.</li>
+  </ol>
+</div>
+
+<div class="part">
+  <div class="part-head"><span class="badge">6</span><h2>Optional: open Kamala's app on a real phone</h2></div>
+  <ol>
+    <li>Connect the phone to the <b>same Wi-Fi</b> as the Mac.</li>
+    <li>Look in the Terminal window for the line <b>"On a phone (same Wi-Fi)"</b>. It shows an address like:
+      <span class="type">http://192.168.43.84:3000/</span></li>
+    <li>On the phone, open the browser (Safari or Chrome) and type that address.</li>
+    <li>Connect it with a code, the same way as in step 4.</li>
+    <li>Turn the phone's volume up. On an iPhone, turn off silent mode.</li>
+  </ol>
+</div>
+
+<div class="part">
+  <div class="part-head"><span class="badge">7</span><h2>Switch the app off when finished</h2></div>
+  <ol>
+    <li>Click on the <b>Terminal</b> window.</li>
+    <li>Press <span class="key">Ctrl</span> + <span class="key">C</span> together. (Ctrl, not Cmd.)</li>
+    <li>The app stops. You can now close Terminal and Safari.</li>
+  </ol>
+</div>
+
+<div class="part">
+  <div class="part-head"><span class="badge">?</span><h2>If something goes wrong</h2></div>
+  <table>
+    <tr><th>What you see</th><th>What to do</th></tr>
+    <tr><td>Safari says it "can't connect to the server"</td><td>The app is off. Do step 1 again.</td></tr>
+    <tr><td>Terminal says "GoldenDose is already running"</td><td>It's already on. Go straight to step 2.</td></tr>
+    <tr><td>Terminal says "command not found"</td><td>Check the line was typed exactly, including the spaces and <b>&amp;&amp;</b>.</td></tr>
+    <tr><td>"Email or password is wrong"</td><td>Type them again: <b>priya@example.com</b> and <b>goldendose-demo</b>.</td></tr>
+    <tr><td>The alarm has no sound</td><td>Click once on Kamala's screen. Turn the volume up.</td></tr>
+    <tr><td>The alarm time has passed</td><td>Press <span class="key">Ctrl</span> + <span class="key">C</span> in Terminal, then do step 1 again. It sets a new alarm 5 minutes later.</td></tr>
+  </table>
+</div>
+
+<div class="part">
+  <div class="part-head"><span class="badge">⌘</span><h2>Keys used in this guide</h2></div>
+  <table class="keys-table">
+    <tr><td><span class="key">Cmd</span> + <span class="key">Space</span></td><td>Open search, to find an app like Terminal or Safari</td></tr>
+    <tr><td><span class="key">Return</span></td><td>Run what you typed, or open what you searched for</td></tr>
+    <tr><td><span class="key">Cmd</span> + <span class="key">V</span></td><td>Paste text you copied</td></tr>
+    <tr><td><span class="key">Cmd</span> + <span class="key">L</span></td><td>Jump to Safari's address bar</td></tr>
+    <tr><td><span class="key">Cmd</span> + <span class="key">N</span></td><td>Open a new Safari window</td></tr>
+    <tr><td><span class="key">Cmd</span> + <span class="key">R</span></td><td>Reload a page, to see the latest information</td></tr>
+    <tr><td><span class="key">Cmd</span> + <span class="key">+</span></td><td>Make the page bigger, for people watching from far away</td></tr>
+    <tr><td><span class="key">Ctrl</span> + <span class="key">C</span></td><td>In Terminal: switch the app off</td></tr>
+  </table>
+</div>
+
+<p class="footer">Each time you start the app with this command, the demo data starts fresh. Anything added earlier is cleared.</p>
+</body>
+</html>

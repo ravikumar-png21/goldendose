@@ -1,0 +1,359 @@
+<title>GoldenDose Demo Runbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single checklist column, scenes as numbered cards on a timeline, with a sticky alarm countdown bar. */
+:root {
+  --paper: #F6F5F0; --card: #FFFFFF; --ink: #141414; --soft: #45453F; --line: #D6D5CE;
+  --go: #0B5A2F; --go-bg: #E3F2E7; --alarm: #FFD23F; --wait: #6B3A00; --wait-bg: #FFF1DC; --code-bg: #ECEBE5;
+  --font: "Atkinson Hyperlegible", Verdana, sans-serif; --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121412; --card: #1B1E1B; --ink: #ECEDE8; --soft: #B5B8B0; --line: #2E322D;
+    --go: #7FD3A2; --go-bg: #1A3326; --alarm: #FFD23F; --wait: #F2B66B; --wait-bg: #33260F; --code-bg: #242823; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121412; --card: #1B1E1B; --ink: #ECEDE8; --soft: #B5B8B0; --line: #2E322D;
+  --go: #7FD3A2; --go-bg: #1A3326; --alarm: #FFD23F; --wait: #F2B66B; --wait-bg: #33260F; --code-bg: #242823; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 18px; line-height: 1.55; padding-inline: 16px; padding-block: 0 64px; }
+.wrap { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+h1, h2, h3 { margin: 0; line-height: 1.15; text-wrap: balance; }
+h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.2rem; }
+p { margin: 0; }
+code, .cmd { font-family: var(--mono); font-size: 0.92em; }
+code { background: var(--code-bg); padding: 1px 6px; border-radius: 5px; overflow-wrap: anywhere; }
+a { color: var(--ink); }
+.eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--go); }
+.lede { color: var(--soft); font-size: 1.1rem; }
+section { display: flex; flex-direction: column; gap: 16px; }
+
+/* Countdown bar */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  margin-inline: -16px; padding: 12px 16px; background: var(--alarm); color: #141414;
+  display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between;
+  border-bottom: 2px solid #141414;
+}
+.bar label { font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.bar input { font: inherit; font-size: 1rem; padding: 6px 8px; border: 2px solid #141414; border-radius: 8px; background: #FFFDF2; color: #141414; }
+.count { font-weight: 700; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.count small { font-weight: 400; font-size: 0.85rem; display: block; }
+
+header.hero { padding-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+
+/* Checklists */
+.checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.checks label { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; cursor: pointer; }
+.checks input { width: 22px; height: 22px; margin-top: 2px; accent-color: var(--go); flex: none; }
+.checks input:checked + span { color: var(--soft); text-decoration: line-through; text-decoration-thickness: 1.5px; }
+
+.cmd-row { display: flex; gap: 8px; align-items: stretch; margin-top: 6px; }
+.cmd { flex: 1; min-width: 0; background: var(--code-bg); border-radius: 8px; padding: 10px 12px; overflow-x: auto; white-space: nowrap; }
+.copy { font: inherit; font-size: 0.85rem; font-weight: 700; padding: 0 12px; border-radius: 8px; border: 2px solid var(--ink); background: var(--card); color: var(--ink); cursor: pointer; }
+
+/* Screen layout sketch */
+.layout { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.layout div { border: 2px solid var(--ink); border-radius: 10px; padding: 12px; background: var(--card); min-width: 0; }
+.layout .term { grid-column: 1 / -1; background: var(--code-bg); font-family: var(--mono); font-size: 0.85rem; }
+.layout b { display: block; }
+.layout span { color: var(--soft); font-size: 0.9rem; overflow-wrap: anywhere; }
+
+/* Scenes */
+ol.scenes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px; counter-reset: scene; }
+.scene { background: var(--card); border: 1.5px solid var(--line); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.scene.star { border: 3px solid var(--ink); box-shadow: 0 5px 0 var(--alarm); }
+.scene-head { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.scene-head .num { font-weight: 700; font-size: 1.4rem; color: var(--go); font-variant-numeric: tabular-nums; }
+.when { margin-left: auto; font-size: 0.85rem; font-weight: 700; background: var(--code-bg); padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+.part { display: grid; grid-template-columns: 5.2em 1fr; gap: 10px; }
+.part > b { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); padding-top: 3px; }
+.part ol, .part ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px; }
+.part > div { min-width: 0; }
+.say { border-left: 4px solid var(--go); padding: 2px 0 2px 12px; font-style: italic; }
+.watch { background: var(--wait-bg); color: var(--wait); border-radius: 10px; padding: 10px 12px; font-size: 0.95rem; }
+.slides { font-size: 0.85rem; font-weight: 700; color: var(--soft); }
+
+/* Tables */
+.table-wrap { overflow-x: auto; border: 1.5px solid var(--line); border-radius: 12px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--go-bg); }
+tr:last-child td { border-bottom: 0; }
+details { background: var(--card); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+details + details { margin-top: 8px; }
+summary { font-weight: 700; cursor: pointer; }
+details p { margin-top: 8px; color: var(--soft); }
+:focus-visible { outline: 3px solid #1F4FD1; outline-offset: 2px; }
+@media (max-width: 520px) { .part { grid-template-columns: 1fr; gap: 2px; } .layout { grid-template-columns: 1fr; } }
+</style>
+
+<div class="bar" role="region" aria-label="Alarm countdown">
+  <label for="alarm-time">⏰ Alarm time <input type="time" id="alarm-time"></label>
+  <p class="count" id="count" aria-live="polite">Type the time from the Terminal<small>printed by npm run demo</small></p>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">GoldenDose · live demo runbook</span>
+    <h1>Every click, every line, in order</h1>
+    <p class="lede">About 20 minutes: slides, then the live demo, then back to slides. Keep this page open on your phone or a second screen. Tick things off as you go; ticks are remembered on this device.</p>
+  </header>
+
+  <section>
+    <span class="eyebrow">The day before</span>
+    <h2>Practise once, start to finish</h2>
+    <ul class="checks" data-group="before">
+      <li><label><input type="checkbox"><span>Do a full practice run out loud with a timer, using this page and the slides.</span></label></li>
+      <li><label><input type="checkbox"><span>Fill in the <b>[₹__]</b> costs on slide 13 and your name on the cover, or remove them.</span></label></li>
+      <li><label><input type="checkbox"><span>Test the projector or TV connection (screen mirroring or cable).</span></label></li>
+      <li><label><input type="checkbox"><span>If using a phone for Kamala's app: test it on the same Wi-Fi, or on your phone's hotspot with the Mac connected to it. Venue Wi-Fi often blocks devices from seeing each other.</span></label></li>
+      <li><label><input type="checkbox"><span>Charge the Mac and the phone. Pack the charger.</span></label></li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="eyebrow">15 minutes before</span>
+    <h2>Set the stage</h2>
+    <ul class="checks" data-group="setup">
+      <li><label><input type="checkbox"><span><b>Do Not Disturb on</b> (Mac: Control Centre → Focus. Phone too.)</span></label></li>
+      <li><label><input type="checkbox"><span><b>Volume up</b> on the Mac (and phone: iPhone silent switch off).</span></label></li>
+      <li><label><input type="checkbox"><span>Close other apps, Safari tabs and anything private on screen.</span></label></li>
+      <li><label><input type="checkbox"><span>Phone only: Auto-Lock → Never (iPhone) or the longest screen timeout (Android).</span></label></li>
+      <li><label><input type="checkbox"><span>Open Terminal and start the demo. Pick the number so the alarm rings about 12 minutes into your talk (example: start 5 minutes before you begin, use 17):
+        <span class="cmd-row"><span class="cmd" id="c1">cd ~/Documents/medstracker &amp;&amp; npm run demo -- --alarm-in 17</span><button class="copy" type="button" data-copy="c1">Copy</button></span></span></label></li>
+      <li><label><input type="checkbox"><span>Read the <b>⏰ alarm time</b> in the Terminal and type it into the yellow bar at the top of this page.</span></label></li>
+      <li><label><input type="checkbox"><span>Safari window 1: <code>http://localhost:3000/care/</code>. Sign in with <code>priya@example.com</code> and <code>goldendose-demo</code>. You land on <b>Hello, Priya</b>.</span></label></li>
+      <li><label><input type="checkbox"><span>Safari window 2 (Cmd + N): <code>http://localhost:3000/</code>, showing <b>Welcome to GoldenDose</b>. Or open it on the phone with the "On a phone" address the Terminal printed.</span></label></li>
+      <li><label><input type="checkbox"><span>Press <b>Cmd +</b> two or three times in both windows so the back of the room can read them.</span></label></li>
+      <li><label><input type="checkbox"><span>Open the slide deck in a third window, on the cover slide.</span></label></li>
+    </ul>
+    <h3>Arrange the screen</h3>
+    <div class="layout" aria-label="Screen layout: family app on the left, Kamala's app on the right, Terminal along the bottom">
+      <div><b>Left: Priya's family app</b><span>localhost:3000/care/</span></div>
+      <div><b>Right: Kamala's app</b><span>localhost:3000/ (or the phone in your hand)</span></div>
+      <div class="term"><b>Bottom: Terminal</b>API requests scroll here live</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Showtime</span>
+    <h2>The run of show</h2>
+    <p class="lede">Times are from when you start talking. "Say" lines are suggestions: put them in your own words.</p>
+
+    <ol class="scenes">
+      <li class="scene">
+        <div class="scene-head"><span class="num">1</span><h3>Why: the problem and the six needs</h3><span class="when">0:00 – 4:00</span></div>
+        <p class="slides">Slides 1 → 5</p>
+        <div class="part"><b>Do</b><div>Present the cover, the problem, the six needs, the two apps and the design rules. Speaker notes are under each slide.</div></div>
+        <div class="part"><b>Say</b><p class="say">"Before any design or code, I watched an older person use their phone and wrote down what went wrong. Every decision you'll see traces back to one of these six needs."</p></div>
+      </li>
+
+      <li class="scene">
+        <div class="scene-head"><span class="num">2</span><h3>Switch to the live app</h3><span class="when">4:00</span></div>
+        <p class="slides">Slide 6, "Let's see it work"</p>
+        <div class="part"><b>Do</b><ol><li>Show slide 6 for a few seconds.</li><li>Switch to the two Safari windows and the Terminal (Cmd + Tab).</li></ol></div>
+        <div class="part"><b>Say</b><p class="say">"Everything you're about to see is running on this laptop: real screens, a real backend, a real database."</p></div>
+      </li>
+
+      <li class="scene">
+        <div class="scene-head"><span class="num">3</span><h3>Priya's family app</h3><span class="when">4:00 – 6:00</span></div>
+        <div class="part"><b>Do</b><ol>
+          <li>Left window: point at <b>Hello, Priya</b> and the two people, Kamala and Ramesh.</li>
+          <li>Click <b>Kamala</b>.</li>
+          <li>Point at <b>Today</b>: this morning's doses show red <b>Missed</b> chips.</li>
+          <li>Point at the Terminal's <code>[SMS → Priya]</code> <code>[WHATSAPP → Priya]</code> <code>[APP → Arjun]</code> lines (scroll up a little if needed).</li>
+          <li>Click <b>Add a medicine</b>. Show the instruction hint and the photo button. Pick <b>Capsule</b> and a colour: the preview changes.</li>
+          <li>Click <b>← Kamala</b> at the top to go back without saving.</li>
+        </ol></div>
+        <div class="part"><b>You'll see</b><div>Today's list with Missed, Later and the Calcium dose due at your alarm time.</div></div>
+        <div class="part"><b>Say</b><p class="say">"Priya looks after both parents. Thirty minutes after a missed dose, every carer is told the way they chose. Her brother Arjun only wants app notifications. Today these messages are simulated; real SMS and WhatsApp need a provider account."</p></div>
+      </li>
+
+      <li class="scene">
+        <div class="scene-head"><span class="num">4</span><h3>Connect Kamala's phone</h3><span class="when">6:00 – 8:00</span></div>
+        <div class="part"><b>Do</b><ol>
+          <li>Left window: scroll to <b>Kamala's phone</b> → click <b>Get a connection code</b>.</li>
+          <li>Right window (or phone): click the code box, type the 6 digits, click <b>Connect</b>.</li>
+          <li><b>Click once anywhere</b> in Kamala's app. This switches the sound on.</li>
+          <li>Point at the Terminal: <code>POST /api/devices/pair → 201</code>, then <code>GET /api/today → 200</code>.</li>
+        </ol></div>
+        <div class="part"><b>You'll see</b><div><b>Good evening, Kamala</b> (or morning/afternoon), with her medicines in time order.</div></div>
+        <div class="part"><b>Say</b><p class="say">"No password for Kamala. Her daughter shows a code once and the phone is remembered. Down here you can see the app asking the backend for today's medicines: that's the API."</p></div>
+        <p class="watch">If the code fails: codes work once, for 15 minutes. Click <b>Get a new code</b>.</p>
+      </li>
+
+      <li class="scene">
+        <div class="scene-head"><span class="num">5</span><h3>Kamala's screen</h3><span class="when">8:00 – 9:30</span></div>
+        <div class="part"><b>Do</b><ol>
+          <li>Point at the size of the text, and the next medicine's thick border.</li>
+          <li>Point at a late card: <b>"Not taken yet"</b> in calm brown.</li>
+          <li>Click <b>Read aloud</b> on any card and let it speak.</li>
+        </ol></div>
+        <div class="part"><b>Say</b><p class="say">"Twice the normal text size, in a typeface made for low vision. Kamala never sees the word 'missed' in red. That would worry her. The family sees it, because they need to act."</p></div>
+        <p class="watch">Early? Check the countdown in the yellow bar. More than 2 minutes to go: use a filler from the list below, then come back.</p>
+      </li>
+
+      <li class="scene star">
+        <div class="scene-head"><span class="num">6</span><h3>The alarm rings: the highlight</h3><span class="when">at ⏰</span></div>
+        <div class="part"><b>Do</b><ol>
+          <li>Stop talking a moment before the alarm time. Let it ring for about 5 seconds.</li>
+          <li>Click <b>Taken</b>. "Well done" appears, then the card shows a green tick and <b>Taken at …</b>.</li>
+          <li>Click <b>Undo</b>. The card goes back to <b>Due now</b>, and the alarm does not ring again straight away.</li>
+          <li>Double-click <b>Taken</b> quickly. Only one tap counts.</li>
+          <li>Point at the Terminal: <code>POST /api/doses → 201</code>, <code>DELETE /api/doses/… → 204</code>, <code>POST /api/doses → 201</code>.</li>
+          <li>Left window: press <b>Cmd + R</b>. Calcium now shows <b>Taken</b> for Priya.</li>
+        </ol></div>
+        <div class="part"><b>Say</b><p class="say">"Not a small notification, but a full-screen alarm with a picture of the pill, and it reads the instruction aloud. One big button. If she presses by mistake, Undo. If her hand shakes, the second tap is ignored. And at the same moment, her daughter can see it's done."</p></div>
+        <p class="watch">No sound: click once in Kamala's window and check the volume. No alarm at all: Kamala's window must be open and visible. Press Cmd + R, it rings within seconds while the dose is due.</p>
+      </li>
+
+      <li class="scene">
+        <div class="scene-head"><span class="num">7</span><h3>Behind the scenes</h3><span class="when">≈ 13:00 – 16:00</span></div>
+        <div class="part"><b>Do</b><ol>
+          <li>In Terminal, open a new tab (Cmd + T) and run the database peek:
+            <span class="cmd-row"><span class="cmd" id="c2">cd ~/Documents/medstracker/backend &amp;&amp; npm run peek</span><button class="copy" type="button" data-copy="c2">Copy</button></span></li>
+          <li>Point at the <b>dose_log</b> table: the Calcium row, status taken, recorded by elder.</li>
+          <li>Back to the slides: <b>7 How it works</b>, <b>8 One tap end to end</b>, <b>9 The data</b>.</li>
+        </ol></div>
+        <div class="part"><b>Say</b><p class="say">"This is the actual database. Every dose is one row. 'System' means the backend marked it missed on its own after 30 minutes. The rules live in the backend, because anything on a phone can be tampered with."</p></div>
+      </li>
+
+      <li class="scene">
+        <div class="scene-head"><span class="num">8</span><h3>How it was built</h3><span class="when">16:00 – 18:00</span></div>
+        <p class="slides">Slides 10 → 11</p>
+        <div class="part"><b>Do</b><div>Walk the ten steps, then quality. Optional, if there's time: run all 56 tests live (about a minute):
+          <span class="cmd-row"><span class="cmd" id="c3">cd ~/Documents/medstracker &amp;&amp; npm test</span><button class="copy" type="button" data-copy="c3">Copy</button></span></div></div>
+        <div class="part"><b>Say</b><p class="say">"The first five steps were planning, not code. Testing found real problems before anyone saw them, like a wrong password that showed no message at all."</p></div>
+      </li>
+
+      <li class="scene">
+        <div class="scene-head"><span class="num">9</span><h3>Limits, next stage, the decision</h3><span class="when">18:00 – 20:00</span></div>
+        <p class="slides">Slides 12 → 14</p>
+        <div class="part"><b>Do</b><div>Be honest about the limits, show the three next steps, then ask the question on slide 14, and <b>stop talking</b>.</div></div>
+        <div class="part"><b>Say</b><p class="say">"Can we test with five older people, then put GoldenDose online?"</p></div>
+        <p class="watch">Leave the demo running. Your boss may want to try Kamala's app themselves: hand them the phone.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <span class="eyebrow">If you reach the alarm too early</span>
+    <h2>Fillers, 30–60 seconds each</h2>
+    <ul class="checks" data-group="fillers">
+      <li><label><input type="checkbox"><span>Family app → Kamala → <b>Last 7 days</b>: yesterday's missed Vitamin D3.</span></label></li>
+      <li><label><input type="checkbox"><span>Family app → Kamala → <b>How you're told about missed doses</b>: the SMS / WhatsApp / App choices, and Invite family.</span></label></li>
+      <li><label><input type="checkbox"><span>Family app → <b>All people</b> → Ramesh: one caregiver, two parents.</span></label></li>
+      <li><label><input type="checkbox"><span>Show slide 8 (one tap end to end) early, then return to the app.</span></label></li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="eyebrow">If something goes wrong</span>
+    <h2>Stay calm, it's all fixable</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>What happens</th><th>Do this</th></tr></thead>
+      <tbody>
+        <tr><td>A page says it can't connect</td><td>The backend stopped. In Terminal: <code>npm run demo -- --alarm-in 3</code> (resets and restarts), then sign in and pair again.</td></tr>
+        <tr><td>"GoldenDose is already running"</td><td>An old copy is still running. Click in its Terminal tab, press Ctrl + C, run the command again.</td></tr>
+        <tr><td>The alarm time already passed</td><td>Stop with Ctrl + C, then <code>npm run demo -- --alarm-in 2</code>. Sign in, pair, and talk for 2 minutes.</td></tr>
+        <tr><td>"That code didn't work"</td><td>Click <b>Get a new code</b>. Each code works once, for 15 minutes.</td></tr>
+        <tr><td>No sound</td><td>Click once in Kamala's window. Check the Mac's volume (and the iPhone silent switch).</td></tr>
+        <tr><td>Phone can't open the page</td><td>Use the Mac's second window instead, and carry on. Explain the phone version afterwards.</td></tr>
+        <tr><td>Nothing works at all</td><td>In Finder, open <code>medstracker/prototype/index.html</code>. It's the clickable design and needs no backend. Use "Ring the next alarm now".</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Questions to expect</span>
+    <h2>Short, honest answers</h2>
+    <details><summary>How much will it cost to run?</summary><p>On this laptop, nothing. Online: a hosting service plus a web address, a small monthly cost at this size. SMS and WhatsApp cost a little per message; app notifications are free. I'll bring compared options and exact prices.</p></details>
+    <details><summary>Is health information safe?</summary><p>Passwords are never stored, only a one-way scramble. Every request is checked so families only see their own people. Typed text can't be used to run code. Online, we add the HTTPS padlock and limits on password guessing.</p></details>
+    <details><summary>Does it work on iPhone?</summary><p>The web version works in any phone browser today. The phone apps will use Android's full-screen alarms and Apple's AlarmKit (iOS 26 and later) for alarms on a locked phone.</p></details>
+    <details><summary>What if the internet is down?</summary><p>Reminders still ring, because the list is saved on the phone. A tap made offline is kept and sent automatically when the internet returns.</p></details>
+    <details><summary>Has a real older person used it?</summary><p>Answer honestly. If you've run the user-testing session, share what you learned. If not: "That's the next step, and the script is ready."</p></details>
+    <details><summary>Could we add other languages?</summary><p>Yes. It's on the "later" list. The words on screen are kept separate from the logic, and read-aloud can use Indian-language voices.</p></details>
+  </section>
+
+  <section>
+    <span class="eyebrow">Afterwards</span>
+    <h2>Wrap up</h2>
+    <ul class="checks" data-group="after">
+      <li><label><input type="checkbox"><span>Stop the demo: click in its Terminal tab and press Ctrl + C.</span></label></li>
+      <li><label><input type="checkbox"><span>Turn Auto-Lock and Do Not Disturb back to normal.</span></label></li>
+      <li><label><input type="checkbox"><span>Write down every question and reaction, word for word, while you remember.</span></label></li>
+      <li><label><input type="checkbox"><span>Share the slides from their Share menu if your boss wants a copy.</span></label></li>
+    </ul>
+  </section>
+</div>
+
+<script>
+  const store = {
+    get(key) { try { return localStorage.getItem(key); } catch { return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch { /* not available */ } },
+  };
+
+  // Remember ticks on this device
+  document.querySelectorAll(".checks").forEach((list) => {
+    list.querySelectorAll("input[type=checkbox]").forEach((box, i) => {
+      const key = `runbook.${list.dataset.group}.${i}`;
+      box.checked = store.get(key) === "1";
+      box.addEventListener("change", () => store.set(key, box.checked ? "1" : "0"));
+    });
+  });
+
+  // Copy buttons
+  document.querySelectorAll(".copy").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const text = document.getElementById(button.dataset.copy).textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = "Copied";
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(document.getElementById(button.dataset.copy));
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        button.textContent = "Selected";
+      }
+      setTimeout(() => { button.textContent = "Copy"; }, 2000);
+    });
+  });
+
+  // Alarm countdown
+  const input = document.getElementById("alarm-time");
+  const out = document.getElementById("count");
+  input.value = store.get("runbook.alarm") || "";
+  input.addEventListener("input", () => { store.set("runbook.alarm", input.value); tick(); });
+
+  function tick() {
+    if (!input.value) {
+      out.innerHTML = "Type the time from the Terminal<small>printed by npm run demo</small>";
+      return;
+    }
+    const [h, m] = input.value.split(":").map(Number);
+    const target = new Date();
+    target.setHours(h, m, 0, 0);
+    const seconds = Math.round((target - Date.now()) / 1000);
+    if (seconds > 0) {
+      const mm = Math.floor(seconds / 60);
+      const ss = String(seconds % 60).padStart(2, "0");
+      const hint = seconds > 180 ? "Plenty of time: use a filler if you're ahead" : seconds > 60 ? "Head to Kamala's app" : "Stop talking, it's about to ring";
+      out.innerHTML = `Rings in ${mm}:${ss}<small>${hint}</small>`;
+    } else if (seconds > -1800) {
+      out.innerHTML = "Ringing now (if Kamala's app is open)<small>It keeps ringing every 5 minutes until answered</small>";
+    } else {
+      out.innerHTML = "That time has passed<small>Restart with npm run demo -- --alarm-in 2</small>";
+    }
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>

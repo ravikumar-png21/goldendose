@@ -1,0 +1,22 @@
+{
+  "name": "goldendose-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The GoldenDose backend: API, database and missed-dose checker",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch src/server.js",
+    "seed": "node --disable-warning=ExperimentalWarning src/seed.js",
+    "tour": "node scripts/walkthrough.js",
+    "test": "node --disable-warning=ExperimentalWarning --test",
+    "peek": "node --disable-warning=ExperimentalWarning scripts/peek.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.137.0",
+    "express": "^5.3.0"
+  }
+}

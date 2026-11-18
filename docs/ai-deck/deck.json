@@ -1,0 +1,35 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-27T12:00:00Z"
+  },
+  "lists": "css",
+  "title": "GoldenDose AI Features",
+  "cover": "ai0",
+  "order": [
+    "ai0",
+    "ai1",
+    "ai2",
+    "ai3",
+    "ai4",
+    "ai5"
+  ],
+  "sections": {
+    "s1": {
+      "description": "Suggested AI features for GoldenDose: not built yet",
+      "start": "ai0"
+    },
+    "s2": {
+      "description": "Guardrails and what to build first",
+      "start": "ai4"
+    }
+  },
+  "faces": {
+    "atkinson-hyperlegible": {
+      "family": "Atkinson Hyperlegible",
+      "href": "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+    }
+  },
+  "designSystems": []
+}

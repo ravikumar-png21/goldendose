@@ -1,0 +1,32 @@
+<!doctype html>
+<!--
+  GoldenDose — the caregiver app (Priya's phone).
+  One page whose content changes with the address after "#", for example:
+    #/signin   #/   #/elder/1   #/elder/1/add   #/elder/1/history
+  This is called a "single-page app": the browser never reloads, JavaScript swaps the screens.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F6F5F0">
+  <title>GoldenDose Family</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../shared/tokens.css">
+  <link rel="stylesheet" href="care.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/">GoldenDose <span>Family</span></a>
+    <button class="link-button" id="sign-out" type="button" hidden>Sign out</button>
+  </header>
+
+  <main class="view" id="view" tabindex="-1">
+    <p class="loading">Loading…</p>
+  </main>
+
+  <script type="module" src="care.js"></script>
+</body>
+</html>

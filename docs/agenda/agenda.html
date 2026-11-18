@@ -1,0 +1,63 @@
+<!doctype html><html><head><meta charset="utf-8"><title>GoldenDose Demo Agenda</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+@page { size: 1920px 1080px; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { width: 1920px; height: 1080px; background: #F6F5F0; color: #141414; font-family: 'Atkinson Hyperlegible', Verdana, sans-serif; padding: 96px 128px; display: flex; flex-direction: column; gap: 56px; position: relative; }
+.eyebrow { font-size: 24px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #0B5A2F; }
+h1 { font-size: 84px; line-height: 1.05; margin-top: 16px; }
+.lead { font-size: 34px; color: #45453F; margin-top: 20px; }
+.steps { display: flex; gap: 20px; align-items: stretch; }
+.arrow { align-self: center; font-size: 48px; font-weight: 700; }
+.step { flex: 1; border-radius: 28px; padding: 36px; display: flex; flex-direction: column; gap: 18px; background: #fff; border: 3px solid #141414; }
+.step.s2 { background: #FFD23F; }
+.step.s3 { background: #0B5A2F; color: #F6F5F0; border-color: #0B5A2F; }
+.step.s4 { background: #FFF1DC; border-color: #6B3A00; color: #6B3A00; }
+.step.s4 h2, .step.s4 p:not(.num):not(.time) { color: #141414; }
+.num { font-size: 26px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.step h2 { font-size: 42px; line-height: 1.1; }
+.step p { font-size: 25px; line-height: 1.45; }
+.time { margin-top: auto; font-size: 24px; font-weight: 700; padding-top: 16px; border-top: 2px solid currentColor; }
+.end { display: flex; justify-content: space-between; align-items: center; font-size: 30px; }
+.end b { color: #0B5A2F; }
+.who { font-size: 24px; color: #6B6A63; }
+</style></head><body>
+<div>
+  <p class="eyebrow">Today's agenda · GoldenDose demo</p>
+  <h1>Hello team! Here is my plan for today.</h1>
+  <p class="lead">Four simple steps: why, how it works, the real thing, and how I built it.</p>
+</div>
+<div class="steps">
+  <div class="step s1">
+    <p class="num">Step 1</p>
+    <h2>Why GoldenDose</h2>
+    <p>The problem we are solving, who it is for, and how it helps older people and their families.</p>
+    <p class="time">12 slides · about 5 minutes</p>
+  </div>
+  <div class="arrow">&#8594;</div>
+  <div class="step s2">
+    <p class="num">Step 2</p>
+    <h2>Click by click</h2>
+    <p>Every screen of the app, one slide per click, so you know exactly what happens and why.</p>
+    <p class="time">Every click · about 10 minutes</p>
+  </div>
+  <div class="arrow">&#8594;</div>
+  <div class="step s3">
+    <p class="num">Step 3</p>
+    <h2>Live demo</h2>
+    <p>The same clicks in the real, working app, including a real medicine alarm ringing on screen.</p>
+    <p class="time">Real app · about 10 minutes</p>
+  </div>
+  <div class="arrow">&#8594;</div>
+  <div class="step s4">
+    <p class="num">Step 4</p>
+    <h2>How I built it</h2>
+    <p>The journey from idea to demo: planning, building, testing, and what comes next.</p>
+    <p class="time">8 slides · about 5 minutes</p>
+  </div>
+</div>
+<div class="end">
+  <p><b>Then:</b> your questions and feedback.</p>
+  <p class="who">Ravi Kumar · 17 October 2026</p>
+</div>
+</body></html>

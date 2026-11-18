@@ -1,0 +1,37 @@
+<section id="journey" data-transition="fade" data-theme="glass2" style="position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,#F6EFE2 0%,#ECE2CF 52%,#DDE8D7 100%);color:#141414;font-family:'Atkinson Hyperlegible', Verdana, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div aria-hidden="true" style="position:absolute;z-index:-1;width:900px;height:900px;border-radius:50%;top:-300px;right:-220px;background:radial-gradient(circle,rgba(19,120,64,0.40) 0%,rgba(0,0,0,0) 68%)"></div><div aria-hidden="true" style="position:absolute;z-index:-1;width:780px;height:780px;border-radius:50%;bottom:-300px;left:-200px;background:radial-gradient(circle,rgba(214,168,96,0.58) 0%,rgba(0,0,0,0) 68%)"></div><div aria-hidden="true" style="position:absolute;z-index:-1;width:620px;height:620px;border-radius:50%;top:260px;left:560px;background:radial-gradient(circle,rgba(255,255,255,0.70) 0%,rgba(0,0,0,0) 70%)"></div><div style="background:linear-gradient(145deg,rgba(255,255,255,0.78) 0%,rgba(255,255,255,0.40) 46%,rgba(255,255,255,0.22) 100%);backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%);border:1.5px solid rgba(255,255,255,0.88);box-shadow:inset 0 2px 0 rgba(255,255,255,0.95),inset 0 -1px 0 rgba(255,255,255,0.40),0 30px 80px rgba(70,56,30,0.20);border-radius:40px;padding:56px 64px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0B5A2F">One tap, end to end</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1">What happens when Kamala taps "Taken"</h2>
+</div>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;gap:32px;padding:22px 0;border-bottom:2px solid rgba(11,90,47,0.16)">
+<p style="width:72px;font-size:44px;font-weight:700;color:#0B5A2F">1</p>
+<p style="width:620px;font-size:32px"><b>Tap.</b> Her phone notices the button</p>
+<p style="flex:1;font-family:'Courier New', monospace;font-size:26px;color:#45453F">Frontend: elder.js</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;padding:22px 0;border-bottom:2px solid rgba(11,90,47,0.16)">
+<p style="width:72px;font-size:44px;font-weight:700;color:#0B5A2F">2</p>
+<p style="width:620px;font-size:32px"><b>Request.</b> Sent through the API</p>
+<p style="flex:1;font-family:'Courier New', monospace;font-size:26px;color:#45453F">POST /api/doses { scheduleId: 2, status: "taken" }</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;padding:22px 0;border-bottom:2px solid rgba(11,90,47,0.16)">
+<p style="width:72px;font-size:44px;font-weight:700;color:#0B5A2F">3</p>
+<p style="width:620px;font-size:32px"><b>Check.</b> The backend applies the rules</p>
+<p style="flex:1;font-family:'Courier New', monospace;font-size:26px;color:#45453F">Her phone? Not too early? Not already marked?</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;padding:22px 0;border-bottom:2px solid rgba(11,90,47,0.16)">
+<p style="width:72px;font-size:44px;font-weight:700;color:#0B5A2F">4</p>
+<p style="width:620px;font-size:32px"><b>Save.</b> One new row in the database</p>
+<p style="flex:1;font-family:'Courier New', monospace;font-size:26px;color:#45453F">dose_log: Amlodipine, 12 Oct, taken, 9:02</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;padding:22px 0">
+<p style="width:72px;font-size:44px;font-weight:700;color:#0B5A2F">5</p>
+<p style="width:620px;font-size:32px"><b>Reply.</b> A green tick appears</p>
+<p style="flex:1;font-family:'Courier New', monospace;font-size:26px;color:#45453F">201 Created → "Taken at 9:02 am"</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:400px;font-size:24px;color:#6B5E45">GoldenDose · 9</p>
+<aside>This is what your boss saw scrolling in the Terminal during the demo. Walk down the five rows. Then add: "If she taps twice by accident, step 3 refuses the second one with 409 Conflict, so nothing is counted twice. And if there's no internet, step 2 waits on her phone and is sent automatically when the connection returns." The whole round trip takes a few milliseconds.</aside>
+</section>

@@ -1,0 +1,12 @@
+{
+  "name": "goldendose",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GoldenDose: a medicine reminder for older adults, with a family app",
+  "type": "module",
+  "scripts": {
+    "demo": "node scripts/start-demo.js",
+    "start": "npm --prefix backend run dev",
+    "test": "npm --prefix backend test && npm --prefix e2e test"
+  }
+}

@@ -1,0 +1,102 @@
+<title>GoldenDose Demo Video</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: the video first, then a chapter list that doubles as the script to copy. */
+:root {
+  --paper: #F6F5F0; --card: #FFFFFF; --ink: #141414; --soft: #45453F; --line: #D6D5CE;
+  --go: #0B5A2F; --go-bg: #E3F2E7; --alarm: #FFD23F;
+  --font: "Atkinson Hyperlegible", Verdana, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --paper: #121412; --card: #1B1E1B; --ink: #ECEDE8; --soft: #B5B8B0; --line: #2E322D; --go: #7FD3A2; --go-bg: #1A3326; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --paper: #121412; --card: #1B1E1B; --ink: #ECEDE8; --soft: #B5B8B0; --line: #2E322D; --go: #7FD3A2; --go-bg: #1A3326; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 18px; line-height: 1.55; padding-inline: 16px; padding-block: 28px 64px; }
+.wrap { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.15; margin: 0; text-wrap: balance; }
+h2 { font-size: 1.4rem; margin: 0; }
+p { margin: 0; }
+.eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--go); }
+.lede { color: var(--soft); font-size: 1.1rem; }
+video { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; background: #141414; border-radius: 16px; display: block; }
+.note { background: var(--go-bg); border-radius: 12px; padding: 12px 16px; font-size: 0.95rem; }
+ol.chapters { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.chapter { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.chapter.now { border: 2.5px solid var(--ink); box-shadow: 0 4px 0 var(--alarm); }
+.jump { font: inherit; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 4.2em; padding: 8px 10px; border-radius: 10px; border: 2px solid var(--ink); background: var(--card); color: var(--ink); cursor: pointer; }
+.chapter .what { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.chapter .step { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); }
+.chapter .do { font-weight: 700; }
+.chapter .say { font-style: italic; color: var(--soft); }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.links a { color: var(--ink); font-weight: 700; }
+:focus-visible { outline: 3px solid #1F4FD1; outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <span class="eyebrow">GoldenDose · demo video</span>
+    <h1>Watch the demo, then copy it</h1>
+    <p class="lede">The real app, clicked at a human pace. Left: Priya's family app. Middle: Kamala's phone. Right: every request sent to the backend. A blue ring shows where to click next.</p>
+  </header>
+
+  <video id="video" controls preload="metadata" playsinline src="goldendose-demo.webm">
+    Your browser can't play this video. Open it in the Claude app or a recent browser.
+  </video>
+  <p class="note">The video has no sound: the alarm's chime and the read-aloud voice play on the real device. In your own demo, the alarm time is set for you by <b>npm run demo</b>, so you skip step 3's "due right now".</p>
+
+  <section style="display:flex;flex-direction:column;gap:14px">
+    <h2>Chapters: what to do, and what to say</h2>
+    <ol class="chapters" id="chapters"></ol>
+  </section>
+
+  <p class="links">Next: <a href="https://claude.ai/artifact/73VWJAvxMxjwzJp9AogwDn">Demo Runbook</a> · <a href="https://claude.ai/artifact/XuejkMhJAKVhHcrz4a1ogu">Slides</a> · <a href="https://claude.ai/artifact/CwZwvkhgH2aisBm8KBmkgC">Build Journal</a></p>
+</div>
+
+<script>
+  const CHAPTERS = [
+    { at: 0,  step: "Start", do: "Three windows: family app, Kamala's phone, behind the scenes", say: "" },
+    { at: 7,  step: "Step 1 · Family app", do: "Sign in as Priya", say: "Priya looks after both her parents. This is her family app." },
+    { at: 15, step: "Step 2 · Family app", do: "Open Kamala. Point at the red Missed chips", say: "This morning's doses were missed, and every carer was alerted 30 minutes later, the way they chose." },
+    { at: 23, step: "Step 3 · Family app", do: "Show Add a medicine (in your demo it's already set up for you)", say: "The instruction is read aloud to Kamala, so mention the colour. A photo of the strip helps most." },
+    { at: 35, step: "Step 4 · Family app", do: "Scroll down and click Get a connection code", say: "Kamala never needs a password. Her daughter shows a code once, and the phone is remembered." },
+    { at: 43, step: "Step 5 · Kamala's phone", do: "Type the 6 digits on Kamala's phone, then Connect", say: "Watch the right: the phone asks the backend for today's medicines. That's the API." },
+    { at: 51, step: "Step 6 · The highlight", do: "The alarm rings. Let it ring for a few seconds", say: "Not a small notification: a full-screen alarm with the pill's picture, and it reads the instruction aloud." },
+    { at: 59, step: "Step 7 · Kamala's phone", do: "Tap the big green Taken button", say: "One big button. Then a clear Well done, and a green tick with the time." },
+    { at: 67, step: "Step 8 · Kamala's phone", do: "Tap Undo, then Taken again", say: "If she presses by mistake, Undo for five minutes. Mistakes are cheap, so she's never afraid of the app." },
+    { at: 75, step: "Step 9 · Family app", do: "Reload Priya's page (Cmd + R): Calcium shows Taken", say: "At the same moment, her daughter can see it's done." },
+  ];
+  const video = document.getElementById("video");
+  const list = document.getElementById("chapters");
+  const clock = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+
+  CHAPTERS.forEach((c, i) => {
+    const li = document.createElement("li");
+    li.className = "chapter";
+    li.dataset.index = i;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "jump";
+    button.textContent = clock(c.at);
+    button.setAttribute("aria-label", `Play from ${clock(c.at)}: ${c.do}`);
+    button.addEventListener("click", () => { video.currentTime = c.at; video.play().catch(() => {}); });
+    const what = document.createElement("div");
+    what.className = "what";
+    what.innerHTML = `<span class="step"></span><span class="do"></span>${c.say ? '<span class="say"></span>' : ""}`;
+    what.querySelector(".step").textContent = c.step;
+    what.querySelector(".do").textContent = c.do;
+    if (c.say) what.querySelector(".say").textContent = `Say: "${c.say}"`;
+    li.append(button, what);
+    list.append(li);
+  });
+
+  // Highlight the chapter that's playing
+  video.addEventListener("timeupdate", () => {
+    let current = 0;
+    CHAPTERS.forEach((c, i) => { if (video.currentTime >= c.at) current = i; });
+    list.querySelectorAll(".chapter").forEach((li) => li.classList.toggle("now", Number(li.dataset.index) === current));
+  });
+</script>
